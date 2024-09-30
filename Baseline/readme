@@ -1,0 +1,32 @@
+Nicholas Nguyen - nn5029
+David Beeson - db0197
+
+In this assignment, we were both responsible for ensuring that we
+understood the problem statement and what we needed to do.
+Most of the time we were together and writing code together, so
+it's hard to determine who contributed to what, but I helped
+modularized the code once we got the core functions and
+capabilities correct. I also helped with writing the test cases.
+
+My teammate David, his experience with SQL came in handy once we
+were trying to debug the wildcard characters, in particular, he
+helped figure out how to create a new string and helped modularize
+the code by creating a new function. He also helped fix and debug
+our spacing issues.
+
+The resources we used throughout this assignment is reading through
+documentation for python modules.
+
+The time spent doing this assignment is about 10-15 hours
+
+This assignment was truly helpful in teaching me about SQL, this was
+my first time learning about SQL and I think the assignment did
+a great job at teaching me the basics of SQL and its syntaxes
+
+David:
+This assignment helped familiarize me with python program writing and testing,
+as I have only had experince in python jupyter notebooks where testing is easy,
+and composing a coherent larger program is harder. I think the assignment helped us
+both to learn and understand the SQL procedure better than our previous knowledge, 
+and helped me to understand the testing and debugging process after a semester and 
+summer removed from doing that in COS 217.
