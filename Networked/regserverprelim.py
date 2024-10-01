@@ -44,27 +44,28 @@ def get_overviews(cursor, sock, client_input):
 
 
     stmt_str, parameters = regoverviews.process_arguments(stmt_str,
-        client_input['dept'], client_input['coursenum'],
-        client_input['area'], client_input['title'])
+        client_input.get('dept', None), client_input.get('coursenum', None),
+        client_input.get('area', None), client_input.get('title', None))
 
     cursor.execute(stmt_str, parameters)
 
     course_fields = ['classid', 'dept', 'coursenum', 'area', 'title']
-    json_doc = [True]
+    # TODO: If server did not handle request successfully return False & error message
+    out_json_doc = [True]
     row = cursor.fetchone()
     while True:
         if row is None:
             break
         temp = {}
-        for i in range(len(course_fields)):
-            temp[course_fields[i]] = row[i]
-        json_doc.append(temp)
+        for field, value in zip(course_fields, row):
+            temp[field] = value
+        out_json_doc.append(temp)
+        row = cursor.fetchone()
 
-    json_str = json.dumps(json_doc)
+    out_json_str = json.dumps(out_json_doc)
     out_flo = sock.makefile(mode='w', encoding='utf-8')
-    out_flo.write(json_str + '\n')
+    out_flo.write(out_json_str + '\n')
     out_flo.flush()
-    print('Wrote to client', json_str)
 
 
 def get_details(cursor, sock, client_input):
@@ -87,7 +88,7 @@ def main():
                         socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
                 server_sock.bind(('', args.port))
-                print(f'Bound server socket to port number: %i', args.port)
+                print(f'Bound server socket to port number:', args.port)
                 server_sock.listen()
                 print('Server listening for a connection...')
 
