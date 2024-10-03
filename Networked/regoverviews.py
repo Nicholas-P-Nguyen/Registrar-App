@@ -36,7 +36,13 @@ def get_escaped_title(title):
 
 #-----------------------------------------------------------------------
 
-def process_arguments(stmt_str, dept, num, area, title):
+def process_arguments(dept, num, area, title):
+    stmt_str = ("SELECT classid, dept, coursenum, area,"
+                " title ")
+    stmt_str += "FROM courses, classes, crosslistings "
+    stmt_str += "WHERE courses.courseid = classes.courseid "
+    stmt_str += ("AND courses.courseid ="
+                 " crosslistings.courseid ")
     parameters = []
     if dept:
         stmt_str += "AND dept LIKE ? "
@@ -108,9 +114,6 @@ def main():
             in_json_doc = json.loads(in_json_str)
 
             print_table(in_json_doc)
-
-
-
 
     except Exception as ex:
         print(ex, file=sys.stderr)

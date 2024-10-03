@@ -1,0 +1,5 @@
+https://docs.python.org/3/library/socket.html
+
+With respect to I/O and compute delays, under what circumstances is regserver.py better than regserverprelim.py?
+
+With respect to I/O and compute delays, under what circumstances is regserver.py not better than regserverprelim.py?

@@ -1,0 +1,971 @@
+------------------------------------------------------------------------
+python regoverviews.py -h
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
+
+Registrar application: show overviews of classes
+
+positional arguments:
+  host        the computer on which the server is running
+  port        the port at which the server is listening
+
+options:
+  -h, --help  show this help message and exit
+  -d dept     show only those classes whose department contains dept
+  -n num      show only those classes whose course number contains num
+  -a area     show only those classes whose distrib area contains area
+  -t title    show only those classes whose course title contains title
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8291  COS    116   ST The Computational Universe
+ 8292  COS    126   QR General Computer Science
+ 8293  COS    126   QR General Computer Science
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 8313  COS    226   QR Algorithms and Data Structures
+ 9032  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  COS    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  COS    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8597  COS    306   ST Introduction to Logic Design
+ 9363  COS    314   QR Computer and Electronic Music through
+                       Programming, Performance, and Composition
+ 8320  COS    320      Compiling Techniques
+ 8321  COS    333      Advanced C%Science Programming Techniques
+ 9240  COS    342   QR Introduction to Graph Theory
+ 8322  COS    398      Junior Independent Work (B.S.E. candidates only)
+10009  COS    401      Introduction to Machine Translation
+ 8323  COS    423      Theory of Algorithms
+ 8324  COS    424      Interacting with Data
+ 8325  COS    426      Computer Graphics
+ 8326  COS    433      Cryptography
+ 8327  COS    435      Information Retrieval, Discovery, and Delivery
+ 8328  COS    444   SA Internet Auctions: Theory and Practice
+ 8329  COS    451      Computational Geometry
+ 8330  COS    461      Computer Networks
+ 8331  COS    498      Senior Independent Work (B.S.E. candidates only)
+ 8332  COS    522      Computational Complexity
+10244  COS    586      Topics in STEP: Information Technology and Public
+                       Policy
+ 8333  COS   598A      Advanced Topics in Computer Science: Economic and
+                       Systems Design for Electronic Marketplaces
+ 8334  COS   598B      Advanced Topics in Computer Science: Algorithms
+                       and Complexity
+ 8335  COS   598C      Advanced Topics in Computer Science: Systems for
+                       Large Data
+ 8336  COS   598D      Advanced Topics in Computer Science: Formal
+                       Methods in Networking
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exit status = 0
+Starting to spawn child threads!
+Spawn child thread number: 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 1
+------------------------------------------------------------------------
+Spawn child thread number: 6
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 4
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 2
+------------------------------------------------------------------------
+Spawn child thread number: 11
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 5
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 3
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 7
+------------------------------------------------------------------------
+Spawn child thread number: 15
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 9
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 8
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 18
+------------------------------------------------------------------------
+Spawn child thread number: 22
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 17
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 21
+------------------------------------------------------------------------
+Spawn child thread number: 26
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 28
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 20
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 13
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 19
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Spawn child thread number: 34
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 12
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 23
+------------------------------------------------------------------------
+Spawn child thread number: 31
+------------------------------------------------------------------------
+Spawn child thread number: 38
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 27
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 30
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 14
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 32
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 47
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 16
+------------------------------------------------------------------------
+Spawn child thread number: 50
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 42
+------------------------------------------------------------------------
+Spawn child thread number: 10
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 45
+------------------------------------------------------------------------
+Spawn child thread number: 46
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 39
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 49
+------------------------------------------------------------------------
+Spawn child thread number: 57
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 41
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 37
+------------------------------------------------------------------------
+Spawn child thread number: 60
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 53
+------------------------------------------------------------------------
+Spawn child thread number: 61
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 29
+------------------------------------------------------------------------
+Spawn child thread number: 62
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 55
+------------------------------------------------------------------------
+Spawn child thread number: 64
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 35
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 43
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 58
+------------------------------------------------------------------------
+Spawn child thread number: 66
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 68
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 24
+------------------------------------------------------------------------
+Spawn child thread number: 70
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 40
+------------------------------------------------------------------------
+Spawn child thread number: 72
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 36
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 52
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 59
+------------------------------------------------------------------------
+Spawn child thread number: 76
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 77
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 56
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 63
+------------------------------------------------------------------------
+Spawn child thread number: 71
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 73
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 65
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 85
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 48
+------------------------------------------------------------------------
+Spawn child thread number: 86
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 44
+------------------------------------------------------------------------
+Spawn child thread number: 91
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 54
+------------------------------------------------------------------------
+Spawn child thread number: 93
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 33
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 84
+------------------------------------------------------------------------
+Spawn child thread number: 96
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 97
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 99
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 74
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 90
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 83
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 95
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 98
+------------------------------------------------------------------------
+Spawn child thread number: 79
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 82
+------------------------------------------------------------------------
+Spawn child thread number: 67
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 92
+------------------------------------------------------------------------
+Spawn child thread number: 69
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 87
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 88
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 81
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 75
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 89
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 94
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 78
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+------------------------------------------------------------------------
+Spawn child thread number: 80
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 51
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+Spawn child thread number: 25
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 0 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 4 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 2 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 5 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 3 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 1 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 7 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 6 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 9 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 11 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 15 Wed Oct  2 20:22:30 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 22 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 17 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 21 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 18 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 28 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 20 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 13 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 26 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 12 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 31 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 27 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 8 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 30 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 14 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 32 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 19 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 16 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 50 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 10 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 46 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 39 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 49 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 57 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 41 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 37 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 53 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 29 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 55 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 35 Wed Oct  2 20:22:31 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 43 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 58 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 38 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 24 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 40 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 36 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 52 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 45 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 59 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 47 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 61 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 56 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 71 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 73 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 65 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 60 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 48 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 76 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 72 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 42 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 44 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 23 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 54 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 33 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 84 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 77 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 99 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 64 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 74 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 90 Wed Oct  2 20:22:32 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 93 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 34 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 96 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 86 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 97 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 79 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 91 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 95 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 63 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 88 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 83 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 82 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 75 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 68 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 89 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 94 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 62 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 92 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 81 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 69 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 67 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 51 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 98 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 87 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 66 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 85 Wed Oct  2 20:22:33 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 80 Wed Oct  2 20:22:34 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 78 Wed Oct  2 20:22:34 2024
+Exit status = 0
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exiting child thread number: 70 Wed Oct  2 20:22:34 2024
+Exit status = 0
+Exiting child thread number: 25 Wed Oct  2 20:22:34 2024

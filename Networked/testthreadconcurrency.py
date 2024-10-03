@@ -8,11 +8,15 @@
 import os
 import sys
 import argparse
+import time
+import threading
+import socket
 
 #-----------------------------------------------------------------------
 
 MAX_LINE_LENGTH = 72
 UNDERLINE = '-' * MAX_LINE_LENGTH
+NUMBER_OF_CLIENTS = 100
 
 #-----------------------------------------------------------------------
 
@@ -51,6 +55,17 @@ def exec_command(program, args):
     else:
         print_flush('Exit status = ' + str(os.WEXITSTATUS(exit_status)))
 
+def exec_thread_command(program, args, client):
+    print_flush(UNDERLINE)
+    command = 'python ' + program + ' ' + args
+    print_flush(command)
+    exit_status = os.system(command)
+    if os.name == 'nt':  # Running on MS Windows?
+        print_flush('Exit status = ' + str(exit_status))
+    else:
+        print_flush('Exit status = ' + str(os.WEXITSTATUS(exit_status)))
+        print('Exiting child thread number:', client, time.asctime(time.localtime()))
+
 #-----------------------------------------------------------------------
 
 def main():
@@ -64,7 +79,21 @@ def main():
     exec_command(program, prefix + '-d COS')
     exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
 
-    # Add more tests here.
+    print('Starting to spawn child threads!')
+
+    # Testing thread concurrency
+    threads = []
+
+    for client in range(NUMBER_OF_CLIENTS):
+        thread = threading.Thread(target=exec_thread_command, args=(program, prefix + '-d COS -a qr -n 2 -t intro', client))
+        print('Spawn child thread number:', client)
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+
 
 #-----------------------------------------------------------------------
 
