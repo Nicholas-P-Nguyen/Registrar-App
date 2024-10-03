@@ -6,6 +6,7 @@
 #-----------------------------------------------------------------------
 
 import os
+import shutil
 import sys
 import argparse
 
@@ -64,8 +65,63 @@ def main():
 
     exec_command(program, prefix + '-d COS')
     exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+    # Testing subsets of 4
+    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
 
-    # Add more tests here.
+    # Testing subsets of 3
+    exec_command(program, prefix + '-d COS -n 2 -a qr')
+    exec_command(program, prefix + '-d COS -n 2 -t intro')
+    exec_command(program, prefix + '-d COS -a qr -t intro')
+    exec_command(program, prefix + '-n 2 -a qr -t intro')
+
+    # Testing subsets of 2
+    exec_command(program, prefix + '-d COS -n 2')
+    exec_command(program, prefix + '-d COS -a qr')
+    exec_command(program, prefix + '-d COS -t intro')
+    exec_command(program, prefix + '-n 2 -a qr')
+    exec_command(program, prefix + '-n 2 -t intro')
+    exec_command(program, prefix + '-a qr -t intro')
+
+    # Testing subsets of 1
+    exec_command(program, prefix + '-d COS')
+    exec_command(program, prefix + '-a qr')
+    exec_command(program, prefix + '-t intro')
+    exec_command(program, prefix + '-n 2')
+
+    # Testing wildcard characters
+    exec_command(program, prefix + '-t c%S')
+    exec_command(program, prefix + '-t C_S')
+
+    exec_command(program, prefix + 'a qr')
+    exec_command(program, prefix + '-A qr')
+    exec_command(program, prefix + '"-a " qr')
+    exec_command(program, prefix + '-a qr st')
+    exec_command(program, prefix + '-a')
+    exec_command(program, prefix + '-a qr -d')
+    exec_command(program, prefix + '-a -d cos')
+    exec_command(program, prefix + '-x')
+
+    # TODO: Error handling for flawed and missing database
+    # Testing database if reg.sqlite file doesn't exist
+    shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    os.remove('reg.sqlite')
+
+    exec_command(program, prefix + '-d COS')
+    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+
+    shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
+    # Testing database if its flawed
+    shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    shutil.copy('regflawed.sqlite', 'reg.sqlite')
+
+    exec_command(program, prefix + '-d COS')
+    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+
+    shutil.copy('regbackup.sqlite', 'reg.sqlite')
+    print('finished testing')
+
+
 
 #-----------------------------------------------------------------------
 

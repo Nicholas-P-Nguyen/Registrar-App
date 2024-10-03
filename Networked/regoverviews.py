@@ -12,15 +12,18 @@ ESCAPE = '\'\\\''
 
 WILDCARD_CHARACTERS = {'%', '_'}
 
-def print_table(table):
-    if table[0]:
-        for row in table[1:]:
-            line = (f"{row.get('classid'):>5} {row.get('dept'):>4} {row.get('coursenum'):>6} "
-                    f"{row.get('area'):>4} {row.get('title'):<}")
-            line_arr = textwrap.wrap(line, width = 72,
-                                     subsequent_indent= f'{' ' * 23}')
-            for l in line_arr:
-                print(l)
+def print_table(course_overview_maps):
+    print(f"{'ClsId':<5} {'Dept':<4} {'CrsNum':<6} "
+          f"{'Area':<4} {'Title':<5}")
+    print(f"{'-' * 5} {'-' * 4} {'-' * 6} "
+          f"{'-' * 4} {'-' * 5}")
+    for overview_map in course_overview_maps:
+        line = (f"{overview_map.get('classid'):>5} {overview_map.get('dept'):>4} {overview_map.get('coursenum'):>6} "
+                f"{overview_map.get('area'):>4} {overview_map.get('title'):<}")
+        line_arr = textwrap.wrap(line, width = 72,
+                                 subsequent_indent= f'{' ' * 23}')
+        for l in line_arr:
+            print(l)
 
 
 #-----------------------------------------------------------------------
@@ -36,7 +39,7 @@ def get_escaped_title(title):
 
 #-----------------------------------------------------------------------
 
-def process_arguments(dept, num, area, title):
+def process_arguments(dept=None, num=None, area=None, title=None):
     stmt_str = ("SELECT classid, dept, coursenum, area,"
                 " title ")
     stmt_str += "FROM courses, classes, crosslistings "
@@ -96,11 +99,6 @@ def main():
 
         args = parser.parse_args()
 
-        print(f"{'ClsId':<5} {'Dept':<4} {'CrsNum':<6} "
-              f"{'Area':<4} {'Title':<5}")
-        print(f"{'-' * 5} {'-' * 4} {'-' * 6} "
-              f"{'-' * 4} {'-' * 5}")
-
         out_json_doc = create_jsondoc(args.d, args.n, args.a, args.t)
         with socket.socket() as sock:
             sock.connect((args.host, args.port))
@@ -112,8 +110,11 @@ def main():
             in_flo = sock.makefile(mode='r', encoding='utf-8')
             in_json_str = in_flo.readline()
             in_json_doc = json.loads(in_json_str)
+            # Unpacking what the server sent back
+            is_success, course_overview_maps = in_json_doc[0], in_json_doc[1]
 
-            print_table(in_json_doc)
+            if is_success:
+                print_table(course_overview_maps)
 
     except Exception as ex:
         print(ex, file=sys.stderr)

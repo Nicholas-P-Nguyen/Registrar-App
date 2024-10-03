@@ -1,8 +1,10 @@
 import contextlib
+import json
 import sqlite3
 import argparse
 import sys
 import textwrap
+import socket
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
@@ -96,24 +98,37 @@ def get_class_details(class_id, cursor):
 
 #-----------------------------------------------------------------------
 
+def create_json_doc(classid):
+    out_json_doc = ['get_details', classid]
+    return out_json_doc
+
+#-----------------------------------------------------------------------
+
 def main():
     try:
-        with sqlite3.connect(DATABASE_URL, isolation_level=None,
-                             uri=True) as connection:
-            with contextlib.closing(connection.cursor()) as cursor:
-                # Help menu
-                parser = argparse.ArgumentParser(
-                    description='Registrar application: show '
-                                'details about a class')
-                parser.add_argument('classid', type=int,
-                                    help='the id of the class whose '
-                                         'details should be shown')
-                args = parser.parse_args()
+        # Help menu
+        parser = argparse.ArgumentParser(
+            description='Registrar application: show '
+                        'details about a class')
+        parser.add_argument('host', type=str, help='the computer on which the server is running')
+        parser.add_argument('port', type=int, help='the port at which the server is listening')
+        parser.add_argument('classid', type=int, help='the id of the class whose details should be shown')
+        args = parser.parse_args()
 
-                get_class_details(args.classid, cursor)
-                get_course_dept_and_num(args.classid, cursor)
-                get_course_details(args.classid, cursor)
-                get_course_profs(args.classid, cursor)
+        out_json_doc = create_json_doc(args.classid)
+        with socket.socket() as sock:
+            sock.connect((args.host, args.port))
+            out_flo = sock.makefile(mode='w', encoding='utf-8')
+            out_json_str = json.dumps(out_json_doc)
+            out_flo.write(out_json_str + '\n')
+            out_flo.flush()
+
+        '''
+        get_class_details(args.classid, cursor)
+        get_course_dept_and_num(args.classid, cursor)
+        get_course_details(args.classid, cursor)
+        get_course_profs(args.classid, cursor)
+        '''
 
     except sqlite3.OperationalError as op_ex:
         print(sys.argv[0] + ":", op_ex, file=sys.stderr)

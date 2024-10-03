@@ -1579,14 +1579,10 @@ regoverviews.py: error: unrecognized arguments: -x
 Exit status = 2
 ------------------------------------------------------------------------
 python regoverviews.py localhost 44444 -d COS
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
 Traceback (most recent call last):
-  File "/Users/nick/Princeton University/Computer Science Classes/COS 333/Assignments/Registrar-App/Networked/regoverviews.py", line 127, in <module>
-    main()
-  File "/Users/nick/Princeton University/Computer Science Classes/COS 333/Assignments/Registrar-App/Networked/regoverviews.py", line 112, in main
-    in_json_str = in_flo.readline()
-                  ^^^^^^^^^^^^^^^^^
+  File "ref_regoverviews.py", line 174, in <module>
+  File "ref_regoverviews.py", line 161, in main
+  File "ref_regoverviews.py", line 115, in get_overviews
   File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socket.py", line 707, in readinto
     return self._sock.recv_into(b)
            ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1594,14 +1590,10 @@ KeyboardInterrupt
 Exit status = 0
 ------------------------------------------------------------------------
 python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
 Traceback (most recent call last):
-  File "/Users/nick/Princeton University/Computer Science Classes/COS 333/Assignments/Registrar-App/Networked/regoverviews.py", line 127, in <module>
-    main()
-  File "/Users/nick/Princeton University/Computer Science Classes/COS 333/Assignments/Registrar-App/Networked/regoverviews.py", line 112, in main
-    in_json_str = in_flo.readline()
-                  ^^^^^^^^^^^^^^^^^
+  File "ref_regoverviews.py", line 174, in <module>
+  File "ref_regoverviews.py", line 161, in main
+  File "ref_regoverviews.py", line 115, in get_overviews
   File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socket.py", line 707, in readinto
     return self._sock.recv_into(b)
            ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1609,14 +1601,10 @@ KeyboardInterrupt
 Exit status = 0
 ------------------------------------------------------------------------
 python regoverviews.py localhost 44444 -d COS
-Expecting value: line 1 column 1 (char 0)
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
+regoverviews.py: Expecting value: line 1 column 1 (char 0)
 Exit status = 1
 ------------------------------------------------------------------------
 python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
-Expecting value: line 1 column 1 (char 0)
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
+regoverviews.py: Expecting value: line 1 column 1 (char 0)
 Exit status = 1
 finished testing

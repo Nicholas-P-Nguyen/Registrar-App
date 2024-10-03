@@ -19,11 +19,10 @@ def handle_client(sock):
                     in_flo = sock.makefile(mode='r', encoding='utf-8')
                     json_str = in_flo.readline()
                     json_doc = json.loads(json_str)
-                    print('Received Request:', json_doc)
+                    print('Received request from client:', json_doc)
 
-                    action = json_doc[0]
-                    client_input = json_doc[1]
-                    if action == 'get_overviews':
+                    request, client_input = json_doc[0], json_doc[1]
+                    if request == 'get_overviews':
                         get_overviews(cursor, sock, client_input)
                     else:
                         get_details(cursor, sock, client_input)
@@ -58,6 +57,7 @@ def get_overviews(cursor, sock, client_input):
 
         course_fields = ['classid', 'dept', 'coursenum', 'area', 'title']
         out_json_doc = [True]
+        temp_arr = []
         row = cursor.fetchone()
         while True:
             if row is None:
@@ -65,13 +65,16 @@ def get_overviews(cursor, sock, client_input):
             temp = {}
             for field, value in zip(course_fields, row):
                 temp[field] = value
-            out_json_doc.append(temp)
+            temp_arr.append(temp)
             row = cursor.fetchone()
+
+        out_json_doc.append(temp_arr)
 
         out_json_str = json.dumps(out_json_doc)
         out_flo = sock.makefile(mode='w', encoding='utf-8')
         out_flo.write(out_json_str + '\n')
         out_flo.flush()
+        print('Successfully handled request send JSON doc:', out_json_str)
 
     except socket.error as sock_ex:
         out_err_json_doc = [False, str(sock_ex)]
@@ -96,7 +99,7 @@ def main():
             socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     server_sock.bind(('', args.port))
-    print(f'Bound server socket to port number:', args.port)
+    print('Bound server socket to port number:', args.port)
     server_sock.listen()
     print('Server listening for a connection...')
 
@@ -104,7 +107,6 @@ def main():
         try:
             sock, client_addr = server_sock.accept()
             print('Accepted connection from Client IP addr and port:', client_addr)
-            print('Server IP addr and port:', sock.getsockname())
             handle_client_thread = threading.Thread(target=handle_client, args=(sock,))
             print('Spawned child thread')
             handle_client_thread.start()
