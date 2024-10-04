@@ -16,85 +16,81 @@ def print_course_details(description):
 
 #-----------------------------------------------------------------------
 
-def get_course_dept_and_num(class_id, cursor):
+def print_regdetails(query_to_result):
+    print('-------------')
+    print('Class Details')
+    print('-------------')
+    class_details = {'Class Id:': 'classid',
+                     'Days:' : 'days',
+                     'Start time:' : 'starttime',
+                     'End time:' : 'endtime',
+                     'Building:' : 'bldg',
+                     'Room:' : 'roomnum'}
+
+    for column_name, query in class_details.items():
+        print(column_name, query_to_result[0][query])
+
+    print('--------------')
+    print('Course Details')
+    print('--------------')
+
+    print('Course Id:', query_to_result[0]['courseid'])
+    print(f'Dept and Number: {query_to_result[0]['dept']} {query_to_result[0]['coursenum']}')
+
+    course_details = {'Area: ' : 'area',
+                      'Title: ' : 'title',
+                      'Description: ' : 'descrip',
+                      'Prerequisites: ' : 'prereqs',
+                      'Professor: ' : 'profname'}
+
+    for column_name, query in course_details.items():
+        if query_to_result[0][query] == "":
+            print(column_name.rstrip())
+        elif len(column_name + query_to_result[0][query]) > 72:
+            print_course_details(column_name + query_to_result[0][query])
+        else:
+            print(column_name + query_to_result[0][query])
+
+#-----------------------------------------------------------------------
+
+def fetch_query_stmt_dept_num():
     stmt_str_dept = "SELECT dept, coursenum "
     stmt_str_dept += "FROM classes, crosslistings "
     stmt_str_dept += "WHERE classid = ? "
     stmt_str_dept += "AND classes.courseid = crosslistings.courseid "
     stmt_str_dept += "ORDER BY dept ASC, coursenum ASC"
 
-    cursor.execute(stmt_str_dept, [class_id])
-    table = cursor.fetchall()
-    for row in table:
-        print(f'Dept and Number: {row[0]} {row[1]}')
+    return stmt_str_dept
 
 #-----------------------------------------------------------------------
 
-def get_course_details(class_id, cursor):
+def fetch_query_stmt_course_details():
     stmt_str_course = "SELECT area, title, descrip, prereqs "
     stmt_str_course += "FROM classes, courses "
     stmt_str_course += "WHERE classid = ? "
     stmt_str_course += "AND classes.courseid = courses.courseid "
 
-    course_fields = ['Area: ', 'Title: ', 'Description: ',
-                     'Prerequisites: ']
-    course_fields_no_space = ['Area:', 'Title:', 'Description:',
-                              'Prerequisites:']
-    cursor.execute(stmt_str_course, [class_id])
-    row = cursor.fetchone()
-
-    for i, _ in enumerate(row):
-        if row[i] == "":
-            print(course_fields_no_space[i])
-        elif len(course_fields[i] + row[i]) > 72:
-            print_course_details(course_fields[i] + row[i])
-        else:
-            print(course_fields[i] + row[i])
+    return stmt_str_course
 
 #-----------------------------------------------------------------------
 
-def get_course_profs(class_id, cursor):
+def fetch_query_stmt_prof():
     stmt_str_prof = "SELECT profname "
     stmt_str_prof += "FROM classes, coursesprofs, profs "
     stmt_str_prof += "WHERE classid = ? "
     stmt_str_prof += "AND classes.courseid = coursesprofs.courseid "
     stmt_str_prof += "AND coursesprofs.profid = profs.profid "
 
-    cursor.execute(stmt_str_prof, [class_id])
-    table = cursor.fetchall()
-
-    for row in table:
-        print(f'Professor: {row[0]}')
+    return stmt_str_prof
 
 #-----------------------------------------------------------------------
 
-def get_class_details(class_id, cursor):
+def fetch_query_stmt_class_details():
     stmt_str = ("SELECT classid, days, starttime, endtime, bldg, "
                 "roomnum, courseid ")
     stmt_str += "FROM classes WHERE classid = ?"
 
-    cursor.execute(stmt_str, [class_id])
-    row = cursor.fetchone()
-
-    if row is None:
-        print(f"{sys.argv[0]}: no class with classid "
-              f"{class_id} exists", file=sys.stderr)
-        sys.exit(1)
-
-    print('-------------')
-    print('Class Details')
-    print('-------------')
-
-    class_fields = ['Class Id:', 'Days:', 'Start time:', 'End time:',
-                    'Building:', 'Room:']
-
-    for field, value in zip(class_fields, row):
-        print(field, value)
-
-    print('--------------')
-    print('Course Details')
-    print('--------------')
-    print('Course Id:', row[6])
+    return stmt_str
 
 #-----------------------------------------------------------------------
 
@@ -123,12 +119,13 @@ def main():
             out_flo.write(out_json_str + '\n')
             out_flo.flush()
 
-        '''
-        get_class_details(args.classid, cursor)
-        get_course_dept_and_num(args.classid, cursor)
-        get_course_details(args.classid, cursor)
-        get_course_profs(args.classid, cursor)
-        '''
+            in_flo = sock.makefile(mode='r', encoding='utf-8')
+            in_json_str = in_flo.readline()
+            in_json_doc = json.loads(in_json_str)
+            # Unpacking what the server sent back
+            is_success, query_to_result = in_json_doc[0], in_json_doc[1]
+            if is_success:
+                print_regdetails(query_to_result)
 
     except sqlite3.OperationalError as op_ex:
         print(sys.argv[0] + ":", op_ex, file=sys.stderr)
