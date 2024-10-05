@@ -1578,6 +1578,16 @@ usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: -x
 Exit status = 2
 ------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -d Om
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 44444 -a m
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+Exit status = 0
+------------------------------------------------------------------------
 python regoverviews.py localhost 44444 -d COS
 regoverviews.py: regserver.py: A server error occurred. Please contact the system administrator.
 Exit status = 1

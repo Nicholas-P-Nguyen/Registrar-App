@@ -47,11 +47,11 @@ def get_query_stmt(dept=None, num=None, area=None, title=None):
     parameters = []
     if dept:
         stmt_str += "AND dept LIKE ? "
-        parameters.append(dept + '%')
+        parameters.append('%' + dept + '%')
 
     if area:
         stmt_str += "AND area LIKE ? "
-        parameters.append(area + '%')
+        parameters.append('%' + area + '%')
 
     if num:
         stmt_str += "AND coursenum LIKE ? "

@@ -101,6 +101,10 @@ def main():
     exec_command(program, prefix + '-a -d cos')
     exec_command(program, prefix + '-x')
 
+    # Testing what we failed for assignment 1
+    exec_command(program, prefix + '-d Om')
+    exec_command(program, prefix + '-a m' )
+
     # Testing database if reg.sqlite file doesn't exist
     shutil.copy('reg.sqlite', 'regbackup.sqlite')
     os.remove('reg.sqlite')
