@@ -284,3 +284,11 @@ Professor: Curtis G. Callan
 Professor: David Botstein
 Professor: Mona Singh
 Exit status = 0
+------------------------------------------------------------------------
+python regdetails.py localhost 44444 9012
+regdetails.py: regserver.py: A server error occurred. Please contact the system administrator.
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 44444 8321
+regdetails.py: regserver.py: A server error occurred. Please contact the system administrator.
+Exit status = 1

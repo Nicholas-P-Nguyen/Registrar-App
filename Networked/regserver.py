@@ -8,21 +8,21 @@ import json
 import regoverviews
 import regdetails
 import threading
-import dotenv
+# import dotenv
 import time
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
 def handle_client(sock):
-    dotenv.load_dotenv()
-
-    IODELAY = os.environ.get('IODELAY', 0)
-    CDELAY = os.environ.get('CDELAY', 0)
-
-    print("DELAY = ", IODELAY)
-
-    time.sleep(IODELAY)
-    time.sleep(CDELAY)
+    # dotenv.load_dotenv()
+    #
+    # IODELAY = os.environ.get('IODELAY', 0)
+    # CDELAY = os.environ.get('CDELAY', 0)
+    #
+    # print("DELAY = ", IODELAY)
+    #
+    # time.sleep(IODELAY)
+    # time.sleep(CDELAY)
 
     try:
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
@@ -44,10 +44,20 @@ def handle_client(sock):
                 print('Exiting child thread')
 
     except sqlite3.OperationalError as op_ex:
-        print(sys.argv[0] + ":", op_ex, file=sys.stderr)
+        err_msg = sys.argv[0] + ": A server error occurred. Please contact the system administrator."
+        out_err_json_doc = [False, err_msg]
+        out_err_json_str = json.dumps(out_err_json_doc)
+        out_flo = sock.makefile(mode='w', encoding='utf-8')
+        out_flo.write(out_err_json_str + '\n')
+        out_flo.flush()
         sys.exit(1)
     except sqlite3.DatabaseError as db_ex:
-        print(sys.argv[0] + ":", db_ex, file=sys.stderr)
+        err_msg = sys.argv[0] + ": A server error occurred. Please contact the system administrator."
+        out_err_json_doc = [False, err_msg]
+        out_err_json_str = json.dumps(out_err_json_doc)
+        out_flo = sock.makefile(mode='w', encoding='utf-8')
+        out_flo.write(out_err_json_str + '\n')
+        out_flo.flush()
         sys.exit(1)
     except socket.error as sock_ex:
         out_err_json_doc = [False, str(sock_ex)]
@@ -60,7 +70,10 @@ def handle_client(sock):
         sys.exit(1)
 
 #-----------------------------------------------------------------------
-
+# get_overviews(): Processes clients request and sends back a json doc
+# create_overviews_dictionary(): Helper function to format dictionary to
+#                                return to client
+#-----------------------------------------------------------------------
 def create_overviews_dictionary(out_json_doc, fetched_data, class_fields, cursor):
     while True:
         if fetched_data is None:
@@ -70,8 +83,6 @@ def create_overviews_dictionary(out_json_doc, fetched_data, class_fields, cursor
             temp_dict[field] = query_result
         out_json_doc[1].append(temp_dict)
         fetched_data = cursor.fetchone()
-
-#-----------------------------------------------------------------------
 
 def get_overviews(cursor, sock, client_input):
     try:
@@ -102,7 +113,13 @@ def get_overviews(cursor, sock, client_input):
         out_flo.flush()
 
 #-----------------------------------------------------------------------
-
+# get_details(): Processes clients request and sends back a json doc
+# put_details(): Help to puts class details into hashmap
+# put_dept_coursenum(): Helper to puts dept and coursenum into a list
+#                       and append to hashmap
+# put_prof_name(): Helper to put profs name into a list and append
+#                  to hashmap
+#-----------------------------------------------------------------------
 def put_details(query_to_result, row, details_fields, cursor):
     while True:
         if row is None:

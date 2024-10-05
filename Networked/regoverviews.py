@@ -115,6 +115,9 @@ def main():
 
             if is_success:
                 print_table(course_overview_maps)
+            else:
+                print(sys.argv[0] + ":", course_overview_maps)
+                sys.exit(1)
 
     except Exception as ex:
         print(ex, file=sys.stderr)

@@ -126,14 +126,16 @@ def main():
             in_json_doc = json.loads(in_json_str)
 
             # Unpacking what the server sent back
-            is_success, query_to_result = in_json_doc[0], in_json_doc[1]
+            is_success, server_output = in_json_doc[0], in_json_doc[1]
 
-            if len(query_to_result) != 13:
+            if is_success and len(server_output) != 13:
                 print(sys.argv[0] + ": erroneous response: the dict does not have 13 bindings")
                 sys.exit(1)
-
-            if is_success:
-                print_regdetails(query_to_result)
+            elif is_success and len(server_output) == 13:
+                print_regdetails(server_output)
+            else:
+                print(sys.argv[0] + ":", server_output)
+                sys.exit(1)
 
 
     except sqlite3.OperationalError as op_ex:

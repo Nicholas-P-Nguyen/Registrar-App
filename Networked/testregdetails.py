@@ -77,17 +77,17 @@ def main():
     exec_command(program, prefix + 'abc123')
     exec_command(program, prefix + '9032')
 
-    # Testing database if reg.sqlite file doesn't exist
-    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    # os.remove('reg.sqlite')
-    # exec_command(program, prefix + '9012')
-    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
-    #
-    # # Testing database if its flawed
-    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
-    # exec_command(program, prefix + '8321')
-    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+    # Testing database cannot be opened
+    shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    os.remove('reg.sqlite')
+    exec_command(program, prefix + '9012')
+    shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
+    # Testing corrupted databsed
+    shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    shutil.copy('regflawed.sqlite', 'reg.sqlite')
+    exec_command(program, prefix + '8321')
+    shutil.copy('regbackup.sqlite', 'reg.sqlite')
 
 
 if __name__ == '__main__':

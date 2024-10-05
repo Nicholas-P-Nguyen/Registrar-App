@@ -101,7 +101,6 @@ def main():
     exec_command(program, prefix + '-a -d cos')
     exec_command(program, prefix + '-x')
 
-    # TODO: Error handling for flawed and missing database
     # Testing database if reg.sqlite file doesn't exist
     shutil.copy('reg.sqlite', 'regbackup.sqlite')
     os.remove('reg.sqlite')
@@ -121,7 +120,6 @@ def main():
     shutil.copy('regbackup.sqlite', 'reg.sqlite')
     print('finished testing')
 
-    # Test for unavailable port and server
 
 
 #-----------------------------------------------------------------------
