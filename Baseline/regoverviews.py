@@ -37,11 +37,11 @@ def process_arguments(stmt_str, dept=None, num=None,
     parameters = []
     if dept:
         stmt_str += "AND dept LIKE ? "
-        parameters.append(dept + '%')
+        parameters.append('%' + dept + '%')
 
     if area:
         stmt_str += "AND area LIKE ? "
-        parameters.append(area + '%')
+        parameters.append('%' + area + '%')
 
     if num:
         stmt_str += "AND coursenum LIKE ? "
