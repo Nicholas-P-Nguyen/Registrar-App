@@ -6,6 +6,7 @@
 #-----------------------------------------------------------------------
 
 import os
+import shutil
 import sys
 import argparse
 
@@ -63,7 +64,31 @@ def main():
 
     exec_command(program, prefix + '8321')
 
-    # Add more tests here.
+    exec_command(program, prefix + '8321')
+    exec_command(program, prefix + '9032')
+    exec_command(program, prefix + '8293')
+    exec_command(program, prefix + '9977')
+    exec_command(program, prefix + '10188')
+    exec_command(program, prefix + '9012')
+    # Testing class ID doesn't exist
+    exec_command(program, prefix + '01010444')
+    exec_command(program, prefix + '')
+    exec_command(program, prefix + '8321 9032')
+    exec_command(program, prefix + 'abc123')
+    exec_command(program, prefix + '9032')
+
+    # Testing database if reg.sqlite file doesn't exist
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # os.remove('reg.sqlite')
+    # exec_command(program, prefix + '9012')
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+    #
+    # # Testing database if its flawed
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
+    # exec_command(program, prefix + '8321')
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
 
 if __name__ == '__main__':
     main()

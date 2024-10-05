@@ -103,22 +103,22 @@ def main():
 
     # TODO: Error handling for flawed and missing database
     # Testing database if reg.sqlite file doesn't exist
-    shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    os.remove('reg.sqlite')
-
-    exec_command(program, prefix + '-d COS')
-    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
-
-    shutil.copy('regbackup.sqlite', 'reg.sqlite')
-
-    # Testing database if its flawed
-    shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    shutil.copy('regflawed.sqlite', 'reg.sqlite')
-
-    exec_command(program, prefix + '-d COS')
-    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
-
-    shutil.copy('regbackup.sqlite', 'reg.sqlite')
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # os.remove('reg.sqlite')
+    #
+    # exec_command(program, prefix + '-d COS')
+    # exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+    #
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+    #
+    # # Testing database if its flawed
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
+    #
+    # exec_command(program, prefix + '-d COS')
+    # exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+    #
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
     print('finished testing')
 
 

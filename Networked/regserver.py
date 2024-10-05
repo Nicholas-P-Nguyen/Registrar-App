@@ -18,11 +18,11 @@ def handle_client(sock):
             with contextlib.closing(connection.cursor()) as cursor:
                 with sock:
                     in_flo = sock.makefile(mode='r', encoding='utf-8')
-                    json_str = in_flo.readline()
-                    json_doc = json.loads(json_str)
-                    print('Received request from client:', json_doc)
+                    in_json_str = in_flo.readline()
+                    in_json_doc = json.loads(in_json_str)
+                    print('Received request from client:', in_json_doc)
 
-                    request, client_input = json_doc[0], json_doc[1]
+                    request, client_input = in_json_doc[0], in_json_doc[1]
                     if request == 'get_overviews':
                         get_overviews(cursor, sock, client_input)
                     elif request == 'get_details':
@@ -49,7 +49,7 @@ def handle_client(sock):
 
 #-----------------------------------------------------------------------
 
-def create_class_dictionary(out_json_doc, fetched_data, class_fields, cursor):
+def create_overviews_dictionary(out_json_doc, fetched_data, class_fields, cursor):
     while True:
         if fetched_data is None:
             break
@@ -61,19 +61,24 @@ def create_class_dictionary(out_json_doc, fetched_data, class_fields, cursor):
 
 def get_overviews(cursor, sock, client_input):
     try:
-        stmt_str, parameters = regoverviews.process_arguments(client_input.get('dept'), client_input.get('coursenum'), client_input.get('area'), client_input.get('title'))
+        stmt_str, parameters = regoverviews.get_query_stmt(
+            client_input.get('dept'), client_input.get('coursenum'),
+            client_input.get('area'), client_input.get('title'))
+
         cursor.execute(stmt_str, parameters)
 
         out_json_doc = [True, [{}]]
         fetched_data = cursor.fetchone()
         course_fields = ['classid', 'dept', 'coursenum', 'area', 'title']
-        create_class_dictionary(out_json_doc, fetched_data, course_fields, cursor)
+        create_overviews_dictionary(out_json_doc, fetched_data,
+                                     course_fields, cursor)
 
         out_json_str = json.dumps(out_json_doc)
         out_flo = sock.makefile(mode='w', encoding='utf-8')
         out_flo.write(out_json_str + '\n')
         out_flo.flush()
-        print('Server successfully handled request and sent JSON doc back to client')
+        print('Server successfully handled request and sent JSON doc '
+              'back to client')
 
     except socket.error as sock_ex:
         out_err_json_doc = [False, str(sock_ex)]
@@ -84,38 +89,71 @@ def get_overviews(cursor, sock, client_input):
 
 #-----------------------------------------------------------------------
 
+def put_details(query_to_result, row, details_fields, cursor):
+    while True:
+        if row is None:
+            break
+        for field, query_result in zip(details_fields, row):
+            query_to_result[field] = query_result
+        row = cursor.fetchone()
+
+def put_dept_coursenum(query_to_result, row, cursor):
+    temp_arr = []
+    while True:
+        if row is None:
+            break
+        temp_dict = {'dept': row[0], 'coursenum': row[1]}
+        temp_arr.append(temp_dict)
+        row = cursor.fetchone()
+
+    query_to_result['deptcoursenums'] = temp_arr
+
+def put_profname(query_to_result, row, cursor):
+    temp_arr = []
+    while True:
+        if row is None:
+            break
+        for query_result in row:
+            temp_arr.append(query_result)
+        row = cursor.fetchone()
+    query_to_result['profnames'] = temp_arr
+
+#-----------------------------------------------------------------------
+
 def get_details(cursor, sock, classid):
     try:
-        out_json_doc = [True, [{}]]
+        out_json_doc = [True]
+        query_to_result = {}
 
         details_fields = ['classid', 'days', 'starttime', 'endtime', 'bldg', 'roomnum', 'courseid']
-        stmt_str_details = regdetails.fetch_query_stmt_class_details()
+        stmt_str_details = regdetails.get_query_stmt_class_details()
         cursor.execute(stmt_str_details, [classid])
         row = cursor.fetchone()
-        create_class_dictionary(out_json_doc, row, details_fields, cursor)
+        put_details(query_to_result, row, details_fields, cursor)
 
-        details_fields = ['dept', 'coursenum']
-        stmt_str_dept = regdetails.fetch_query_stmt_dept_num()
+        stmt_str_dept = regdetails.get_query_stmt_dept_num()
         cursor.execute(stmt_str_dept, [classid])
         row = cursor.fetchone()
-        create_class_dictionary(out_json_doc, row, details_fields, cursor)
+        put_dept_coursenum(query_to_result, row, cursor)
 
         details_fields = ['area', 'title', 'descrip', 'prereqs']
-        stmt_str_course = regdetails.fetch_query_stmt_course_details()
+        stmt_str_course = regdetails.get_query_stmt_course_details()
         cursor.execute(stmt_str_course, [classid])
         row = cursor.fetchone()
-        create_class_dictionary(out_json_doc, row, details_fields, cursor)
+        put_details(query_to_result, row, details_fields, cursor)
 
-        details_fields = ['profname']
-        stmt_str_prof = regdetails.fetch_query_stmt_prof()
+        stmt_str_prof = regdetails.get_query_stmt_prof()
         cursor.execute(stmt_str_prof, [classid])
         row = cursor.fetchone()
-        create_class_dictionary(out_json_doc, row, details_fields, cursor)
+        put_profname(query_to_result, row, cursor)
+
+        out_json_doc.append(query_to_result)
 
         out_json_str = json.dumps(out_json_doc)
         out_flo = sock.makefile(mode='w', encoding='utf-8')
         out_flo.write(out_json_str + '\n')
         out_flo.flush()
+        print(out_json_doc)
         print('Server successfully handled request and sent JSON doc back to client')
 
     except socket.error as sock_ex:
@@ -128,8 +166,10 @@ def get_details(cursor, sock, classid):
 #-----------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description='Server for the registrar application')
-    parser.add_argument('port', type=int, help='the port at which the server should listen')
+    parser = argparse.ArgumentParser(description='Server for the '
+                                     'registrar application')
+    parser.add_argument('port', type=int, help='the port'
+                        ' at which the server should listen')
     args = parser.parse_args()
 
     server_sock = socket.socket()
@@ -146,8 +186,12 @@ def main():
     while True:
         try:
             sock, client_addr = server_sock.accept()
-            print('Accepted connection from Client IP addr and port:', client_addr)
-            handle_client_thread = threading.Thread(target=handle_client, args=(sock,))
+            print('Accepted connection from Client IP addr and port:',
+                  client_addr)
+
+            handle_client_thread = threading.Thread(
+                target=handle_client, args=(sock,))
+
             print('Spawned child thread')
             handle_client_thread.start()
 

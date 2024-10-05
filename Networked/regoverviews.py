@@ -1,6 +1,4 @@
-import contextlib
 import json
-import sqlite3
 import argparse
 import sys
 import textwrap
@@ -25,7 +23,6 @@ def print_table(course_overview_maps):
         for l in line_arr:
             print(l)
 
-
 #-----------------------------------------------------------------------
 
 def get_escaped_title(title):
@@ -39,13 +36,14 @@ def get_escaped_title(title):
 
 #-----------------------------------------------------------------------
 
-def process_arguments(dept=None, num=None, area=None, title=None):
+def get_query_stmt(dept=None, num=None, area=None, title=None):
     stmt_str = ("SELECT classid, dept, coursenum, area,"
                 " title ")
     stmt_str += "FROM courses, classes, crosslistings "
     stmt_str += "WHERE courses.courseid = classes.courseid "
     stmt_str += ("AND courses.courseid ="
                  " crosslistings.courseid ")
+
     parameters = []
     if dept:
         stmt_str += "AND dept LIKE ? "
@@ -68,6 +66,7 @@ def process_arguments(dept=None, num=None, area=None, title=None):
             parameters.append('%' + title + '%')
 
     stmt_str += "ORDER BY dept ASC, coursenum ASC"
+
     return stmt_str, parameters
 
 #-----------------------------------------------------------------------
@@ -82,6 +81,7 @@ def create_jsondoc(dept, coursenum, area, title):
         course_query_map[field] = user_input
 
     out_json_doc.append(course_query_map)
+
     return out_json_doc
 
 def main():

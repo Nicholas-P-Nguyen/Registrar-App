@@ -1,4 +1,3 @@
-import contextlib
 import json
 import sqlite3
 import argparse
@@ -28,32 +27,35 @@ def print_regdetails(query_to_result):
                      'Room:' : 'roomnum'}
 
     for column_name, query in class_details.items():
-        print(column_name, query_to_result[0][query])
+        print(column_name, query_to_result[query])
 
     print('--------------')
     print('Course Details')
     print('--------------')
+    print('Course Id:', query_to_result['courseid'])
 
-    print('Course Id:', query_to_result[0]['courseid'])
-    print(f'Dept and Number: {query_to_result[0]['dept']} {query_to_result[0]['coursenum']}')
+    dept_coursenums = query_to_result['deptcoursenums']
+    for i, _ in enumerate(dept_coursenums):
+        print(f'Dept and Number: {dept_coursenums[i]['dept']} {dept_coursenums[i]['coursenum']}')
 
     course_details = {'Area: ' : 'area',
                       'Title: ' : 'title',
                       'Description: ' : 'descrip',
-                      'Prerequisites: ' : 'prereqs',
-                      'Professor: ' : 'profname'}
-
+                      'Prerequisites: ' : 'prereqs'}
     for column_name, query in course_details.items():
-        if query_to_result[0][query] == "":
+        if query_to_result[query] == "":
             print(column_name.rstrip())
-        elif len(column_name + query_to_result[0][query]) > 72:
-            print_course_details(column_name + query_to_result[0][query])
+        elif len(column_name + query_to_result[query]) > 72:
+            print_course_details(column_name + query_to_result[query])
         else:
-            print(column_name + query_to_result[0][query])
+            print(column_name + query_to_result[query])
+
+    for prof in query_to_result['profnames']:
+        print('Professor:', prof)
 
 #-----------------------------------------------------------------------
 
-def fetch_query_stmt_dept_num():
+def get_query_stmt_dept_num():
     stmt_str_dept = "SELECT dept, coursenum "
     stmt_str_dept += "FROM classes, crosslistings "
     stmt_str_dept += "WHERE classid = ? "
@@ -64,7 +66,7 @@ def fetch_query_stmt_dept_num():
 
 #-----------------------------------------------------------------------
 
-def fetch_query_stmt_course_details():
+def get_query_stmt_course_details():
     stmt_str_course = "SELECT area, title, descrip, prereqs "
     stmt_str_course += "FROM classes, courses "
     stmt_str_course += "WHERE classid = ? "
@@ -74,7 +76,7 @@ def fetch_query_stmt_course_details():
 
 #-----------------------------------------------------------------------
 
-def fetch_query_stmt_prof():
+def get_query_stmt_prof():
     stmt_str_prof = "SELECT profname "
     stmt_str_prof += "FROM classes, coursesprofs, profs "
     stmt_str_prof += "WHERE classid = ? "
@@ -85,12 +87,12 @@ def fetch_query_stmt_prof():
 
 #-----------------------------------------------------------------------
 
-def fetch_query_stmt_class_details():
-    stmt_str = ("SELECT classid, days, starttime, endtime, bldg, "
-                "roomnum, courseid ")
-    stmt_str += "FROM classes WHERE classid = ?"
+def get_query_stmt_class_details():
+    stmt_str_details = ("SELECT classid, days, starttime, endtime, "
+                        "bldg, roomnum, courseid ")
+    stmt_str_details += "FROM classes WHERE classid = ?"
 
-    return stmt_str
+    return stmt_str_details
 
 #-----------------------------------------------------------------------
 
@@ -122,10 +124,17 @@ def main():
             in_flo = sock.makefile(mode='r', encoding='utf-8')
             in_json_str = in_flo.readline()
             in_json_doc = json.loads(in_json_str)
+
             # Unpacking what the server sent back
             is_success, query_to_result = in_json_doc[0], in_json_doc[1]
+
+            if len(query_to_result) != 13:
+                print(sys.argv[0] + ": erroneous response: the dict does not have 13 bindings")
+                sys.exit(1)
+
             if is_success:
                 print_regdetails(query_to_result)
+
 
     except sqlite3.OperationalError as op_ex:
         print(sys.argv[0] + ":", op_ex, file=sys.stderr)

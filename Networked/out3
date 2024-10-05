@@ -1,5 +1,19 @@
 ------------------------------------------------------------------------
-python regdetails.py 8321
+python regdetails.py -h
+usage: regdetails.py [-h] host port classid
+
+Registrar application: show details about a class
+
+positional arguments:
+  host        the computer on which the server is running
+  port        the port at which the server is listening
+  classid     the id of the class whose details should be shown
+
+options:
+  -h, --help  show this help message and exit
+Exit status = 0
+------------------------------------------------------------------------
+python regdetails.py localhost 44444 8321
 -------------
 Class Details
 -------------
@@ -28,7 +42,36 @@ Prerequisites: COS 217 and COS 226.
 Professor: Brian W. Kernighan
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 9032
+python regdetails.py localhost 44444 8321
+-------------
+Class Details
+-------------
+Class Id: 8321
+Days: TTh
+Start time: 11:00 AM
+End time: 12:20 PM
+Building: FRIEN
+Room: 006
+--------------
+Course Details
+--------------
+Course Id: 3672
+Dept and Number: COS 333
+Area:
+Title: Advanced C%Science Programming Techniques
+Description: This is a course about the practice of programming.
+   Programming is more than just writing code.  Programmers must also
+   assess tradeoffs, choose among design alternatives, debug and test,
+   improve performance, and maintain software written by themselves &
+   others. At the same time, they must be concerned with compatibility,
+   robustness, and reliability, while meeting specifications.  Students
+   will have the opportunity to develop these skills by working on their
+   own code and in group projects.
+Prerequisites: COS 217 and COS 226.
+Professor: Brian W. Kernighan
+Exit status = 0
+------------------------------------------------------------------------
+python regdetails.py localhost 44444 9032
 -------------
 Class Details
 -------------
@@ -66,7 +109,7 @@ Professor: David Botstein
 Professor: Mona Singh
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 8293
+python regdetails.py localhost 44444 8293
 -------------
 Class Details
 -------------
@@ -98,7 +141,7 @@ Prerequisites:
 Professor: Larry L. Peterson
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 9977
+python regdetails.py localhost 44444 9977
 -------------
 Class Details
 -------------
@@ -131,7 +174,7 @@ Prerequisites: At least one SPA 200-level course (two 200-level SPA
 Professor: Angel G. Loureiro
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 10188
+python regdetails.py localhost 44444 10188
 -------------
 Class Details
 -------------
@@ -162,7 +205,7 @@ Prerequisites: Enrollment is limited to WWS concentrators and
    instructor.
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 9012
+python regdetails.py localhost 44444 9012
 -------------
 Class Details
 -------------
@@ -185,26 +228,26 @@ Description: To provide the basis for acquiring a command of written and
 Prerequisites: HLS 101 or equivalent, or permission of instructor.
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py 01010444
-regdetails.py: no class with classid 1010444 exists
+python regdetails.py localhost 44444 01010444
+regdetails.py: erroneous response: the dict does not have 13 bindings
 Exit status = 1
 ------------------------------------------------------------------------
-python regdetails.py 
-usage: regdetails.py [-h] classid
+python regdetails.py localhost 44444 
+usage: regdetails.py [-h] host port classid
 regdetails.py: error: the following arguments are required: classid
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py 8321 9032
-usage: regdetails.py [-h] classid
+python regdetails.py localhost 44444 8321 9032
+usage: regdetails.py [-h] host port classid
 regdetails.py: error: unrecognized arguments: 9032
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py abc123
-usage: regdetails.py [-h] classid
+python regdetails.py localhost 44444 abc123
+usage: regdetails.py [-h] host port classid
 regdetails.py: error: argument classid: invalid int value: 'abc123'
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py 9032
+python regdetails.py localhost 44444 9032
 -------------
 Class Details
 -------------
@@ -241,11 +284,3 @@ Professor: Curtis G. Callan
 Professor: David Botstein
 Professor: Mona Singh
 Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py 9012
-regdetails.py: unable to open database file
-Exit status = 1
-------------------------------------------------------------------------
-python regdetails.py 8321
-regdetails.py: no such table: classes
-Exit status = 1
