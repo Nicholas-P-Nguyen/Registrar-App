@@ -16,159 +16,107 @@ options:
   -t title    show only those classes whose course title contains title
 Exit status = 0
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 8336  COS   598D      Advanced Topics in Computer Science: Formal
-                       Methods in Networking
+python regoverviews.py localhost 333 -d COS
 Exit status = 0
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -a qr -n 2 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -n 2 -a qr
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -n 2 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -a qr -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -n 2 -a qr -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9138  MAE    206   QR Introduction to Engineering Dynamics
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -n 2
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 8332  COS    522      Computational Complexity
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -a qr
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9240  COS    342   QR Introduction to Graph Theory
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10009  COS    401      Introduction to Machine Translation
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -n 2 -a qr
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10178  WWS    332   QR Quantitative Analysis for Public Policy
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -n 2 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10038  VIS    262   LA Introductory Video and Film Production
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a qr -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 9423  ORF    335   QR Introduction to Financial Mathematics
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -d COS
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 8336  COS   598D      Advanced Topics in Computer Science: Formal
-                       Methods in Networking
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a qr
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10178  WWS    332   QR Quantitative Analysis for Public Policy
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -t intro
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10038  VIS    262   LA Introductory Video and Film Production
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -n 2
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
-10241  WWS   582F      Topics in Applied Economics: Financial Markets
-                       and Public Policy
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -t c%S
-ClsId Dept CrsNum Area Title
------ ---- ------ ---- -----
- 8321  COS    333      Advanced C%Science Programming Techniques
-Exit status = 0
-------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -t C_S
+python regoverviews.py localhost 333 -d COS -a qr -n 2 -t intro
 ClsId Dept CrsNum Area Title
 ----- ---- ------ ---- -----
  8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
 Exit status = 0
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 a qr
+python regoverviews.py localhost 333 -d COS -a qr -n 2 -t intro
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -n 2 -a qr
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -n 2 -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -a qr -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -n 2 -a qr -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -n 2
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -a qr
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -n 2 -a qr
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -n 2 -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -a qr -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -d COS
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -a qr
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -t intro
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -n 2
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -t c%S
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 -t C_S
+Exit status = 0
+------------------------------------------------------------------------
+python regoverviews.py localhost 333 a qr
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: a qr
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -A qr
+python regoverviews.py localhost 333 -A qr
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: -A qr
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 "-a " qr
+python regoverviews.py localhost 333 "-a " qr
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: qr
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a qr st
+python regoverviews.py localhost 333 -a qr st
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: st
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a
+python regoverviews.py localhost 333 -a
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: argument -a: expected one argument
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a qr -d
+python regoverviews.py localhost 333 -a qr -d
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: argument -d: expected one argument
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -a -d cos
+python regoverviews.py localhost 333 -a -d cos
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: argument -a: expected one argument
 Exit status = 2
 ------------------------------------------------------------------------
-python regoverviews.py localhost 44444 -x
+python regoverviews.py localhost 333 -x
 usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title] host port
 regoverviews.py: error: unrecognized arguments: -x
 Exit status = 2

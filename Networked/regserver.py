@@ -19,6 +19,8 @@ def handle_client(sock):
     IODELAY = os.environ.get('IODELAY', 0)
     CDELAY = os.environ.get('CDELAY', 0)
 
+    print("DELAY = ", IODELAY)
+
     time.sleep(IODELAY)
     time.sleep(CDELAY)
 
