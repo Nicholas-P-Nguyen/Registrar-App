@@ -53,8 +53,10 @@ def create_overviews_dictionary(out_json_doc, fetched_data, class_fields, cursor
     while True:
         if fetched_data is None:
             break
+        temp_dict = {}
         for field, query_result in zip(class_fields, fetched_data):
-            out_json_doc[1][0][field] = query_result
+            temp_dict[field] = query_result
+        out_json_doc[1].append(temp_dict)
         fetched_data = cursor.fetchone()
 
 #-----------------------------------------------------------------------
@@ -67,12 +69,12 @@ def get_overviews(cursor, sock, client_input):
 
         cursor.execute(stmt_str, parameters)
 
-        out_json_doc = [True, [{}]]
+        out_json_doc = [True, []]
         fetched_data = cursor.fetchone()
         course_fields = ['classid', 'dept', 'coursenum', 'area', 'title']
         create_overviews_dictionary(out_json_doc, fetched_data,
                                      course_fields, cursor)
-
+        print(out_json_doc)
         out_json_str = json.dumps(out_json_doc)
         out_flo = sock.makefile(mode='w', encoding='utf-8')
         out_flo.write(out_json_str + '\n')
@@ -108,7 +110,7 @@ def put_dept_coursenum(query_to_result, row, cursor):
 
     query_to_result['deptcoursenums'] = temp_arr
 
-def put_profname(query_to_result, row, cursor):
+def put_prof_name(query_to_result, row, cursor):
     temp_arr = []
     while True:
         if row is None:
@@ -145,7 +147,7 @@ def get_details(cursor, sock, classid):
         stmt_str_prof = regdetails.get_query_stmt_prof()
         cursor.execute(stmt_str_prof, [classid])
         row = cursor.fetchone()
-        put_profname(query_to_result, row, cursor)
+        put_prof_name(query_to_result, row, cursor)
 
         out_json_doc.append(query_to_result)
 
@@ -177,11 +179,14 @@ def main():
     if os.name != 'nt':
         server_sock.setsockopt(
             socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
-    server_sock.bind(('', args.port))
-    print('Bound server socket to port number:', args.port)
-    server_sock.listen()
-    print('Server listening for a connection...')
+    try:
+        server_sock.bind(('', args.port))
+        print('Bound server socket to port number:', args.port)
+        server_sock.listen()
+        print('Server listening for a connection...')
+    except OSError as e:
+        print(sys.argv[0] + ":", e, file=sys.stderr)
+        sys.exit(1)
 
     while True:
         try:
