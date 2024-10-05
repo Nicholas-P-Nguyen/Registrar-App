@@ -101,7 +101,12 @@ def main():
 
         out_json_doc = create_jsondoc(args.d, args.n, args.a, args.t)
         with socket.socket() as sock:
-            sock.connect((args.host, args.port))
+            try:
+                sock.connect((args.host, args.port))
+            except Exception as e:
+                print(sys.argv[0] + ':', e)
+                sys.exit(1)
+
             out_flo = sock.makefile(mode='w', encoding='utf-8')
             out_json_str = json.dumps(out_json_doc)
             out_flo.write(out_json_str + '\n')

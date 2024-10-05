@@ -43,15 +43,7 @@ def handle_client(sock):
                 print('Close socket in child thread')
                 print('Exiting child thread')
 
-    except sqlite3.OperationalError as op_ex:
-        err_msg = sys.argv[0] + ": A server error occurred. Please contact the system administrator."
-        out_err_json_doc = [False, err_msg]
-        out_err_json_str = json.dumps(out_err_json_doc)
-        out_flo = sock.makefile(mode='w', encoding='utf-8')
-        out_flo.write(out_err_json_str + '\n')
-        out_flo.flush()
-        sys.exit(1)
-    except sqlite3.DatabaseError as db_ex:
+    except sqlite3.Error as e:
         err_msg = sys.argv[0] + ": A server error occurred. Please contact the system administrator."
         out_err_json_doc = [False, err_msg]
         out_err_json_str = json.dumps(out_err_json_doc)
@@ -114,7 +106,7 @@ def get_overviews(cursor, sock, client_input):
 
 #-----------------------------------------------------------------------
 # get_details(): Processes clients request and sends back a json doc
-# put_details(): Help to puts class details into hashmap
+# put_details(): Helper to puts class details into hashmap
 # put_dept_coursenum(): Helper to puts dept and coursenum into a list
 #                       and append to hashmap
 # put_prof_name(): Helper to put profs name into a list and append
