@@ -24,7 +24,7 @@ def handle_client(sock):
     IODELAY = int(os.environ.get('IODELAY', 0))
     CDELAY = int(os.environ.get('CDELAY', 0))
 
-    #time.sleep(IODELAY)
+    time.sleep(IODELAY)
     compute_delay(CDELAY)
 
     try:
