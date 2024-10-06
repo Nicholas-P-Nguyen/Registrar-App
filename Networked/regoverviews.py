@@ -3,6 +3,7 @@ import argparse
 import sys
 import textwrap
 import socket
+import time
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 # End of the escape clause -> '\'
@@ -112,6 +113,9 @@ def main():
             out_flo.write(out_json_str + '\n')
             out_flo.flush()
 
+            # delay_testing
+            time_then = time.time()
+
             in_flo = sock.makefile(mode='r', encoding='utf-8')
             in_json_str = in_flo.readline()
             in_json_doc = json.loads(in_json_str)
@@ -119,6 +123,9 @@ def main():
             is_success, course_overview_maps = in_json_doc[0], in_json_doc[1]
 
             if is_success:
+                time_now = time.time()
+                print(time_now - time_then)
+                
                 print_table(course_overview_maps)
             else:
                 print(sys.argv[0] + ":", course_overview_maps)

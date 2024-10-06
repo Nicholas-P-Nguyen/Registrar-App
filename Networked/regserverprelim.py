@@ -6,6 +6,8 @@ import sys
 import socket
 import json
 import regoverviews
+import time
+from dotenv import load_dotenv
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
@@ -21,6 +23,17 @@ RETURNS a JSON document list containing a boolean and a hashmap
              value = course details
 '''
 def handle_client(cursor, sock):
+    load_dotenv("delays.env")
+
+    IODELAY = int(os.environ.get('IODELAY', 0))
+    CDELAY = int(os.environ.get('CDELAY', 0))
+    
+    print("IODELAY =", IODELAY)
+    print("CDELAY =", CDELAY)
+
+    # time.sleep(IODELAY)
+    time.sleep(CDELAY)
+
     in_flo = sock.makefile(mode='r', encoding='utf-8')
     json_str = in_flo.readline()
     json_doc = json.loads(json_str)

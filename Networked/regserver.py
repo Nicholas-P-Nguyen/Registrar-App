@@ -8,21 +8,22 @@ import json
 import regoverviews
 import regdetails
 import threading
-# import dotenv
 import time
+from dotenv import load_dotenv
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
 def handle_client(sock):
-    # dotenv.load_dotenv()
-    #
-    # IODELAY = os.environ.get('IODELAY', 0)
-    # CDELAY = os.environ.get('CDELAY', 0)
-    #
-    # print("DELAY = ", IODELAY)
-    #
+    load_dotenv("delays.env")
+
+    IODELAY = int(os.environ.get('IODELAY', 0))
+    CDELAY = int(os.environ.get('CDELAY', 0))
+    
+    print("IODELAY =", IODELAY)
+    print("CDELAY =", CDELAY)
+
     # time.sleep(IODELAY)
-    # time.sleep(CDELAY)
+    time.sleep(CDELAY)
 
     try:
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
