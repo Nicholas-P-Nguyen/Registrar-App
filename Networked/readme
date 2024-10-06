@@ -2,4 +2,8 @@ https://docs.python.org/3/library/socket.html
 
 With respect to I/O and compute delays, under what circumstances is regserver.py better than regserverprelim.py?
 
+Regserver.py handles the iodelays much better than regserverprelim.py, because the program can just switch threads when there is an iodelay. So it is not effected by the iodelays.
+
 With respect to I/O and compute delays, under what circumstances is regserver.py not better than regserverprelim.py?
+
+Regserver doesn't handle computer delays much better than regserverprelim.py because the processor is consumed, so switching threads doesn't allow more processing to take place

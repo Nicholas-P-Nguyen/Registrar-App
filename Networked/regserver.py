@@ -13,17 +13,19 @@ from dotenv import load_dotenv
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
+def compute_delay(delay):
+    initial_thread_time = time.thread_time()
+    while (time.thread_time() - initial_thread_time) < delay:
+        pass
+
 def handle_client(sock):
     load_dotenv("delays.env")
 
     IODELAY = int(os.environ.get('IODELAY', 0))
     CDELAY = int(os.environ.get('CDELAY', 0))
-    
-    print("IODELAY =", IODELAY)
-    print("CDELAY =", CDELAY)
 
-    # time.sleep(IODELAY)
-    time.sleep(CDELAY)
+    #time.sleep(IODELAY)
+    compute_delay(CDELAY)
 
     try:
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
