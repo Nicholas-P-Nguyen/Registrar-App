@@ -1,5 +1,21 @@
 https://docs.python.org/3/library/socket.html
 
+Nick Nguyen, David Beeson
+
+David: 
+I helped to compose the regserverprelim structure, the regoverviews.py program, implemented the delay handling section, and contributed to our bug testing process. I also helped to correct our previous errors from A1. Nick and I also wrote some code together, and so we both contributed to many portions of the assignment. I think that the assignment was helpful in understanding the port concept, and especially sending data over json documents. I also appreciated the delay section to reinforce the strengths and weaknesses of multi-threading. 
+
+Nick:
+
+Outside sources:
+N/A?
+
+Outside people:
+N/A?
+
+Time:
+We probably spent around 15 hours?
+
 With respect to I/O and compute delays, under what circumstances is regserver.py better than regserverprelim.py?
 
 Regserver.py handles the iodelays much better than regserverprelim.py, because the program can just switch threads when there is an iodelay. So it is not effected by the iodelays.
