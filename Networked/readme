@@ -6,15 +6,20 @@ David:
 I helped to compose the regserverprelim structure, the regoverviews.py program, implemented the delay handling section, and contributed to our bug testing process. I also helped to correct our previous errors from A1. Nick and I also wrote some code together, and so we both contributed to many portions of the assignment. I think that the assignment was helpful in understanding the port concept, and especially sending data over json documents. I also appreciated the delay section to reinforce the strengths and weaknesses of multi-threading. 
 
 Nick:
+For my contribution to the assignment, I helped think through how we would send back to the client the JSON document and the data structure needed. Additionally, I helped with the threading concurrency and performed unit tests to ensure that our thread concurrency was working as intended.
+David's conbribution to the assignment is stated above and we worked together substantially to think through the debugging process, in particular how to create the dictionary required for regdetails and how to send it back the client.
 
 Outside sources:
-N/A?
+https://docs.python.org/3/library/threading.html
+https://docs.python.org/3/library/socket.html
 
 Outside people:
-N/A?
+N/A
 
 Time:
 We probably spent around 15 hours?
+
+Assesment: This assignment was well thought out and taught us the importance of socket programming and how we can communicate between the client and server.
 
 With respect to I/O and compute delays, under what circumstances is regserver.py better than regserverprelim.py?
 
