@@ -3,7 +3,6 @@ import argparse
 import sys
 import textwrap
 import socket
-import time
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 # End of the escape clause -> '\'
@@ -17,8 +16,11 @@ def print_table(course_overview_maps):
     print(f"{'-' * 5} {'-' * 4} {'-' * 6} "
           f"{'-' * 4} {'-' * 5}")
     for overview_map in course_overview_maps:
-        line = (f"{overview_map.get('classid'):>5} {overview_map.get('dept'):>4} {overview_map.get('coursenum'):>6} "
-                f"{overview_map.get('area'):>4} {overview_map.get('title'):<}")
+        line = (f"{overview_map.get('classid'):>5} "
+                f"{overview_map.get('dept'):>4} "
+                f"{overview_map.get('coursenum'):>6} "
+                f"{overview_map.get('area'):>4} "
+                f"{overview_map.get('title'):<}")
         line_arr = textwrap.wrap(line, width = 72,
                                  subsequent_indent= f'{' ' * 23}')
         for l in line_arr:
@@ -85,18 +87,32 @@ def create_jsondoc(dept, coursenum, area, title):
 
     return out_json_doc
 
+#-----------------------------------------------------------------------
+
 def main():
     try:
         # Help menu
         parser = argparse.ArgumentParser(
             description='Registrar application: '
                         'show overviews of classes')
-        parser.add_argument('host', type=str, help='the computer on which the server is running')
-        parser.add_argument('port', type=int, help='the port at which the server is listening')
-        parser.add_argument('-d', type=str, metavar='dept', help='show only those classes whose department contains dept')
-        parser.add_argument('-n', type=str, metavar='num', help='show only those classes whose course number contains num')
-        parser.add_argument('-a', type=str, metavar='area', help='show only those classes whose distrib area contains area')
-        parser.add_argument('-t', type=str, metavar='title', help='show only those classes whose course title contains title')
+        parser.add_argument('host', type=str,
+                            help='the computer on which the server '
+                                 'is running')
+        parser.add_argument('port', type=int,
+                            help='the port at which the server is '
+                                 'listening')
+        parser.add_argument('-d', type=str, metavar='dept',
+                            help='show only those classes whose '
+                                 'department contains dept')
+        parser.add_argument('-n', type=str, metavar='num',
+                            help='show only those classes whose course '
+                                 'number contains num')
+        parser.add_argument('-a', type=str, metavar='area',
+                            help='show only those classes whose distrib'
+                                 ' area contains area')
+        parser.add_argument('-t', type=str, metavar='title',
+                            help='show only those classes whose course '
+                                 'title contains title')
 
         args = parser.parse_args()
 
@@ -117,8 +133,8 @@ def main():
             in_json_str = in_flo.readline()
             in_json_doc = json.loads(in_json_str)
             # Unpacking what the server sent back
-            is_success, course_overview_maps = in_json_doc[0], in_json_doc[1]
-
+            is_success = in_json_doc[0]
+            course_overview_maps = in_json_doc[1]
             if is_success:
                 print_table(course_overview_maps)
             else:
