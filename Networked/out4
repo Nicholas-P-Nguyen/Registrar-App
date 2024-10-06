@@ -13,282 +13,61 @@ options:
   -h, --help  show this help message and exit
 Exit status = 0
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 8321
--------------
-Class Details
--------------
-Class Id: 8321
-Days: TTh
-Start time: 11:00 AM
-End time: 12:20 PM
-Building: FRIEN
-Room: 006
---------------
-Course Details
---------------
-Course Id: 3672
-Dept and Number: COS 333
-Area:
-Title: Advanced C%Science Programming Techniques
-Description: This is a course about the practice of programming.
-   Programming is more than just writing code.  Programmers must also
-   assess tradeoffs, choose among design alternatives, debug and test,
-   improve performance, and maintain software written by themselves &
-   others. At the same time, they must be concerned with compatibility,
-   robustness, and reliability, while meeting specifications.  Students
-   will have the opportunity to develop these skills by working on their
-   own code and in group projects.
-Prerequisites: COS 217 and COS 226.
-Professor: Brian W. Kernighan
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 8321
--------------
-Class Details
--------------
-Class Id: 8321
-Days: TTh
-Start time: 11:00 AM
-End time: 12:20 PM
-Building: FRIEN
-Room: 006
---------------
-Course Details
---------------
-Course Id: 3672
-Dept and Number: COS 333
-Area:
-Title: Advanced C%Science Programming Techniques
-Description: This is a course about the practice of programming.
-   Programming is more than just writing code.  Programmers must also
-   assess tradeoffs, choose among design alternatives, debug and test,
-   improve performance, and maintain software written by themselves &
-   others. At the same time, they must be concerned with compatibility,
-   robustness, and reliability, while meeting specifications.  Students
-   will have the opportunity to develop these skills by working on their
-   own code and in group projects.
-Prerequisites: COS 217 and COS 226.
-Professor: Brian W. Kernighan
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 9032
--------------
-Class Details
--------------
-Class Id: 9032
-Days: W
-Start time: 07:30 PM
-End time: 08:50 PM
-Building: ICAHN
-Room: ATR
---------------
-Course Details
---------------
-Course Id: 4026
-Dept and Number: CHM 233
-Dept and Number: COS 233
-Dept and Number: ISC 233
-Dept and Number: MOL 233
-Dept and Number: PHY 233
-Area: ST
-Title: An Integrated, Quantitative Introduction to the Natural Sciences
-   II
-Description: An integrated, mathematically and computationally
-   sophisticated introduction to physics and chemistry, drawing on
-   examples from biological systems.  This year-long 4 course sequence
-   is a multi-disciplinary course taught across 4 departments with the
-   following faculty involved in teaching the course: W. Bialek , C.
-   Callan, J. Shaevitz (PHY); D. Botstein (MOL); M. Singh (COS); E.
-   Carter (MAE).
-Prerequisites: Familiarity with calculus at the level of MAT 103/104 or
-   Advanced Placement Calculus BC, solid high school physics and
-   chemistry courses. Students must have completed ISC/CHM/COS/MOL/PHY
-   231 and 232 in the Fall.
-Professor: Curtis G. Callan
-Professor: David Botstein
-Professor: Mona Singh
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 8293
--------------
-Class Details
--------------
-Class Id: 8293
-Days: TTh
-Start time: 11:00 AM
-End time: 11:50 AM
-Building: FRIEN
-Room: 101
---------------
-Course Details
---------------
-Course Id: 3668
-Dept and Number: COS 126
-Dept and Number: EGR 126
-Area: QR
-Title: General Computer Science
-Description: An introduction to computer science in the context of
-   scientific, engineering, and commercial applications. The goal of the
-   course is to teach basic principles and practical issues, while at
-   the same time preparing students to use computers effectively for
-   applications in computer science, physics, biology, chemistry,
-   engineering, and other disciplines. Topics include: hardware and
-   software systems; programming in Java; algorithms and data
-   structures; fundamental principles of computation; and scientific
-   computing, including simulation, optimization, and data analysis. Two
-   lectures, two precepts.
-Prerequisites:
-Professor: Larry L. Peterson
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 9977
--------------
-Class Details
--------------
-Class Id: 9977
-Days: MW
-Start time: 01:30 PM
-End time: 02:50 PM
-Building: FRIST
-Room: 307
---------------
-Course Details
---------------
-Course Id: 4419
-Dept and Number: SPA 321
-Area: LA
-Title: Topics in the Intellectual History of Modern and Contemporary
-   Spain: Culture and Memory of the Spanish Civil War
-Description: An examination of the narrative, poetry, film, songs,
-   photography and graphic art generated by Spaniards and foreigners
-   about the Spanish Civil War (1936-1939) in the seventy years since
-   the war was fought. This cultural production will be examined in the
-   context of the political and ideological reasons that explain the
-   international attraction the war generated. Among the works examined:
-   poems by Neruda; Picasso's Guernica (it was the first war in which
-   aviation played a significant role); documentaries (The Spanish
-   Earth, Mourir a Madrid); and photographs by Robert Capa (the Spanish
-   Civil War consecrated the nascent art of photojournalism).
-Prerequisites: At least one SPA 200-level course (two 200-level SPA
-   courses advisable) or instructor's permission.
-Professor: Angel G. Loureiro
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 10188
--------------
-Class Details
--------------
-Class Id: 10188
-Days: T
-Start time: 07:30 PM
-End time: 10:20 PM
-Building: ROBEH
-Room: 014
---------------
-Course Details
---------------
-Course Id: 4554
-Dept and Number: WWS 402
-Area:
-Title: Policy Seminars
-Description: In policy seminars students work in groups first
-   formulating the general problem, then engaging in individual research
-   on subtopics, and finally presenting their inferences for discussion
-   and debate and producing a collective policy report.
-Prerequisites: Enrollment is limited to WWS concentrators and
-   certificate students. The course is required for concentrators, for
-   whom it is considered Junior Independent Work.  Junior concentrators
-   are automatically signed up for the policy seminar as Junior
-   Independent Work, not as WWS 402.  WWS juniors who are certificate
-   students must enroll.  Seniors serving as commissioners and graduate
-   students serving as consultants may enroll with permission of the
-   instructor.
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 9012
--------------
-Class Details
--------------
-Class Id: 9012
-Days: MW
-Start time: 11:00 AM
-End time: 11:50 AM
-Building: SCCAH
-Room: 103
---------------
-Course Details
---------------
-Course Id: 4017
-Dept and Number: HLS 102
-Dept and Number: MOG 102
-Area:
-Title: Elementary Modern Greek II
-Description: To provide the basis for acquiring a command of written and
-   spoken Modern Greek.
-Prerequisites: HLS 101 or equivalent, or permission of instructor.
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 01010444
-regdetails.py: erroneous response: the dict does not have 13 bindings
+python regdetails.py localhost 333 8321
+regdetails.py: [Errno 61] Connection refused
 Exit status = 1
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 
+python regdetails.py localhost 333 8321
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 9032
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 8293
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 9977
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 10188
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 9012
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 01010444
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 
 usage: regdetails.py [-h] host port classid
 regdetails.py: error: the following arguments are required: classid
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 8321 9032
+python regdetails.py localhost 333 8321 9032
 usage: regdetails.py [-h] host port classid
 regdetails.py: error: unrecognized arguments: 9032
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 abc123
+python regdetails.py localhost 333 abc123
 usage: regdetails.py [-h] host port classid
 regdetails.py: error: argument classid: invalid int value: 'abc123'
 Exit status = 2
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 9032
--------------
-Class Details
--------------
-Class Id: 9032
-Days: W
-Start time: 07:30 PM
-End time: 08:50 PM
-Building: ICAHN
-Room: ATR
---------------
-Course Details
---------------
-Course Id: 4026
-Dept and Number: CHM 233
-Dept and Number: COS 233
-Dept and Number: ISC 233
-Dept and Number: MOL 233
-Dept and Number: PHY 233
-Area: ST
-Title: An Integrated, Quantitative Introduction to the Natural Sciences
-   II
-Description: An integrated, mathematically and computationally
-   sophisticated introduction to physics and chemistry, drawing on
-   examples from biological systems.  This year-long 4 course sequence
-   is a multi-disciplinary course taught across 4 departments with the
-   following faculty involved in teaching the course: W. Bialek , C.
-   Callan, J. Shaevitz (PHY); D. Botstein (MOL); M. Singh (COS); E.
-   Carter (MAE).
-Prerequisites: Familiarity with calculus at the level of MAT 103/104 or
-   Advanced Placement Calculus BC, solid high school physics and
-   chemistry courses. Students must have completed ISC/CHM/COS/MOL/PHY
-   231 and 232 in the Fall.
-Professor: Curtis G. Callan
-Professor: David Botstein
-Professor: Mona Singh
-Exit status = 0
-------------------------------------------------------------------------
-python regdetails.py localhost 44444 9012
-regdetails.py: regserver.py: A server error occurred. Please contact the system administrator.
+python regdetails.py localhost 333 9032
+regdetails.py: [Errno 61] Connection refused
 Exit status = 1
 ------------------------------------------------------------------------
-python regdetails.py localhost 44444 8321
-regdetails.py: regserver.py: A server error occurred. Please contact the system administrator.
+python regdetails.py localhost 333 9012
+regdetails.py: [Errno 61] Connection refused
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 333 8321
+regdetails.py: [Errno 61] Connection refused
 Exit status = 1
