@@ -8,12 +8,16 @@ import sqlite3
 import sys
 import socket
 import json
-import regoverviews
-import regdetails
 import threading
 import time
-from dotenv import load_dotenv
 
+import regoverviews
+import regdetails
+
+
+
+IODELAY = int(os.environ.get('IODELAY', 0))
+CDELAY = int(os.environ.get('CDELAY', 0))
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
 def compute_delay(delay):
@@ -22,11 +26,6 @@ def compute_delay(delay):
         pass
 
 def handle_client(sock):
-    load_dotenv("delays.env")
-
-    IODELAY = int(os.environ.get('IODELAY', 0))
-    CDELAY = int(os.environ.get('CDELAY', 0))
-
     time.sleep(IODELAY)
     compute_delay(CDELAY)
 
@@ -40,7 +39,10 @@ def handle_client(sock):
                     in_json_doc = json.loads(in_json_str)
                     print('Received request from client:', in_json_doc)
 
-                    request, client_input = in_json_doc[0], in_json_doc[1]
+                    request, client_input = (
+                        in_json_doc[0],
+                        in_json_doc[1]
+                    )
                     if request == 'get_overviews':
                         get_overviews(cursor, sock, client_input)
                     elif request == 'get_details':
@@ -49,7 +51,7 @@ def handle_client(sock):
                 print('Close socket in child thread')
                 print('Exiting child thread')
 
-    except sqlite3.Error as e:
+    except sqlite3.Error as _:
         err_msg = sys.argv[0] + ": A server error occurred. Please " \
             "contact the system administrator."
         out_err_json_doc = [False, err_msg]
@@ -73,7 +75,8 @@ def handle_client(sock):
 # create_overviews_dictionary(): Helper function to format dictionary to
 #                                return to client
 #-----------------------------------------------------------------------
-def create_overviews_dictionary(out_json_doc, fetched_data, class_fields, cursor):
+def create_overviews_dictionary(out_json_doc,
+                                fetched_data, class_fields, cursor):
     while True:
         if fetched_data is None:
             break
@@ -93,7 +96,8 @@ def get_overviews(cursor, sock, client_input):
 
         out_json_doc = [True, []]
         fetched_data = cursor.fetchone()
-        course_fields = ['classid', 'dept', 'coursenum', 'area', 'title']
+        course_fields = ['classid', 'dept', 'coursenum',
+                          'area', 'title']
         create_overviews_dictionary(out_json_doc, fetched_data,
                                      course_fields, cursor)
         print(out_json_doc)
@@ -155,25 +159,27 @@ def get_details(cursor, sock, classid):
         out_json_doc = [True]
         query_to_result = {}
 
-        details_fields = ['classid', 'days', 'starttime', 'endtime', 'bldg', 'roomnum', 'courseid']
-        stmt_str_details = regdetails.get_query_stmt_class_details()
-        cursor.execute(stmt_str_details, [classid])
+        details_fields = ['classid', 'days', 'starttime',
+                          'endtime', 'bldg', 'roomnum', 'courseid']
+
+        stmt_str_specific = regdetails.get_query_stmt_class_details()
+        cursor.execute(stmt_str_specific, [classid])
         row = cursor.fetchone()
         put_details(query_to_result, row, details_fields, cursor)
 
-        stmt_str_dept = regdetails.get_query_stmt_dept_num()
-        cursor.execute(stmt_str_dept, [classid])
+        stmt_str_specific  = regdetails.get_query_stmt_dept_num()
+        cursor.execute(stmt_str_specific, [classid])
         row = cursor.fetchone()
         put_dept_coursenum(query_to_result, row, cursor)
 
         details_fields = ['area', 'title', 'descrip', 'prereqs']
-        stmt_str_course = regdetails.get_query_stmt_course_details()
-        cursor.execute(stmt_str_course, [classid])
+        stmt_str_specific = regdetails.get_query_stmt_course_details()
+        cursor.execute(stmt_str_specific, [classid])
         row = cursor.fetchone()
         put_details(query_to_result, row, details_fields, cursor)
 
-        stmt_str_prof = regdetails.get_query_stmt_prof()
-        cursor.execute(stmt_str_prof, [classid])
+        stmt_str_specific = regdetails.get_query_stmt_prof()
+        cursor.execute(stmt_str_specific, [classid])
         row = cursor.fetchone()
         put_prof_name(query_to_result, row, cursor)
 
@@ -184,7 +190,8 @@ def get_details(cursor, sock, classid):
         out_flo.write(out_json_str + '\n')
         out_flo.flush()
         print(out_json_doc)
-        print('Server successfully handled request and sent JSON doc back to client')
+        print('Server successfully handled '
+              'request and sent JSON doc back to client')
 
     except socket.error as sock_ex:
         out_err_json_doc = [False, str(sock_ex)]

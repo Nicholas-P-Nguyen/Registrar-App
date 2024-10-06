@@ -35,8 +35,9 @@ def print_regdetails(query_to_result):
     print('Course Id:', query_to_result['courseid'])
 
     dept_coursenums = query_to_result['deptcoursenums']
-    for i, _ in enumerate(dept_coursenums):
-        print(f'Dept and Number: {dept_coursenums[i]['dept']} {dept_coursenums[i]['coursenum']}')
+    for _, i in enumerate(dept_coursenums):
+        print(f'Dept and Number: {i['dept']}'
+              f'{i['coursenum']}')
 
     course_details = {'Area: ' : 'area',
                       'Title: ' : 'title',
@@ -108,9 +109,13 @@ def main():
         parser = argparse.ArgumentParser(
             description='Registrar application: show '
                         'details about a class')
-        parser.add_argument('host', type=str, help='the computer on which the server is running')
-        parser.add_argument('port', type=int, help='the port at which the server is listening')
-        parser.add_argument('classid', type=int, help='the id of the class whose details should be shown')
+        parser.add_argument('host', type=str, help='the '
+                            'computer on which the server is running')
+        parser.add_argument('port', type=int, help='the '
+                            'port at which the server is listening')
+        parser.add_argument('classid', type=int,
+                            help='the id of the class '
+                            'whose details should be shown')
         args = parser.parse_args()
 
         out_json_doc = create_json_doc(args.classid)
@@ -133,7 +138,8 @@ def main():
             is_success, server_output = in_json_doc[0], in_json_doc[1]
 
             if is_success and len(server_output) != 13:
-                print(sys.argv[0] + ": erroneous response: the dict does not have 13 bindings")
+                print(sys.argv[0] + ': erroneous response: '
+                      'the dict does not have 13 bindings')
                 sys.exit(1)
             elif is_success and len(server_output) == 13:
                 print_regdetails(server_output)
