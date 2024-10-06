@@ -1,3 +1,6 @@
+
+'''Implementing the regserver.py as specified'''
+
 import argparse
 import contextlib
 import os
@@ -47,7 +50,8 @@ def handle_client(sock):
                 print('Exiting child thread')
 
     except sqlite3.Error as e:
-        err_msg = sys.argv[0] + ": A server error occurred. Please contact the system administrator."
+        err_msg = sys.argv[0] + ": A server error occurred. Please " \
+            "contact the system administrator."
         out_err_json_doc = [False, err_msg]
         out_err_json_str = json.dumps(out_err_json_doc)
         out_flo = sock.makefile(mode='w', encoding='utf-8')
