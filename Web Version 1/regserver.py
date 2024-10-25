@@ -14,12 +14,74 @@ import flask
 
 import regoverviews
 import regdetails
+import displayoverviews
 
 
-
+#-----------------------------------------------------------------------
+# Global Variables
+#-----------------------------------------------------------------------
 IODELAY = int(os.environ.get('IODELAY', 0))
 CDELAY = int(os.environ.get('CDELAY', 0))
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
+
+#-----------------------------------------------------------------------
+# Setting up Flask webpage
+#-----------------------------------------------------------------------
+app = flask.Flask(__name__, template_folder='.')
+
+@app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
+def index():
+    html_code = flask.render_template('index.html', 
+                                      table = displayoverviews.main(),
+                                      classid='classid',
+                                      dept='dept',
+                                      coursenum='coursenum',
+                                      area='area')
+    
+    response = flask.make_response(html_code)
+    return response
+
+@app.route('/searchform', methods=['GET'])
+def search_form():
+    prev_dept = flask.request.cookies.get('dept')
+    if prev_dept is None:
+        prev_dept = ''
+    
+    prev_num = flask.request.cookies.get('num')
+    if prev_num is None:
+        prev_num = ''
+
+    prev_area = flask.request.cookies.get('area')
+    if prev_area is None:
+        prev_area = ''
+
+    prev_title = flask.request.cookies.get('title')
+    if prev_title is None:
+        prev_title = ''
+    
+    html_code = flask.render_template('searchform.html',
+                                      prev_dept=prev_dept,
+                                      prev_num=prev_num,
+                                      prev_area=prev_area,
+                                      prev_title=prev_title)
+    response = flask.make_response(html_code)
+    return response
+
+@app.route('/searchresults', methods=['GET'])
+def searchresults():
+    dept = flask.request.args.get('dept')
+
+    num = flask.request.args.get('num')
+
+    area = flask.request.args.get('area')
+
+    title = flask.request.args.get('title')
+
+    
+    
+
+#-----------------------------------------------------------------------
 
 def compute_delay(delay):
     initial_thread_time = time.thread_time()
@@ -209,6 +271,12 @@ def main():
     parser.add_argument('port', type=int, help='the port'
                         ' at which the server should listen')
     args = parser.parse_args()
+
+    try:
+        app.run(host='127.0.0.1', port=args.port, debug=True)
+    except Exception as ex:
+        print(ex, file=sys.stderr)
+        sys.exit(1)
 
     server_sock = socket.socket()
     print('Opened server socket')

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Registrar's Office Class Search</title>
     </head>
     <body>
         {% include 'header.html' %}
-        <br>
         {% include 'searchform.html' %}
+
+        <strong>ClassId</strong> <strong>Dept</strong> <strong>Num</strong> <strong>Area</strong> <strong>Title</strong>
         <br>
-        {% include 'searchresults.html' %}
+
+        {% for row in table %}
+            {{ row['classid'] }} {{ row['dept'] }} {{ row['coursenum'] }} {{ row['area'] }} {{ row['title'] }}
         <br>
+        {% endfor %}
+    
         {% include 'footer.html' %}
-
-
     </body>
 </html>
