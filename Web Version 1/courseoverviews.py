@@ -1,12 +1,11 @@
 import contextlib
 import sqlite3
-import argparse
 import sys
-import textwrap
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 # End of the escape clause -> '\'
 ESCAPE = '\'\\\''
+WILDCARD_CHARACTERS = {'%', '_'}
 
 def create_overview_dict(row, cursor):
     output = []
@@ -21,6 +20,17 @@ def create_overview_dict(row, cursor):
         output.append(temp_dict)
         row = cursor.fetchone()
     return output
+
+#-----------------------------------------------------------------------
+
+def get_escaped_title(title):
+    new_title = ''
+    for char in title:
+        if char in WILDCARD_CHARACTERS:
+            new_title += f'\\{char}'
+        else:
+            new_title += char
+    return new_title
 
 #-----------------------------------------------------------------------
 
@@ -41,14 +51,18 @@ def process_arguments(stmt_str, dept=None, num=None,
 
     if title:
         stmt_str += f"AND title LIKE ? ESCAPE {ESCAPE} "
-        parameters.append('%' + title + '%')
+        if '_' in title or '%' in title:
+            new_title = get_escaped_title(title)
+            parameters.append('%' + new_title + '%')
+        else:
+            parameters.append('%' + title + '%')
 
     stmt_str += "ORDER BY dept ASC, coursenum ASC"
     return stmt_str, parameters
 
 #-----------------------------------------------------------------------
 
-def main():
+def main(dept, num, area, title):
     try:
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
                              uri=True) as connection:
@@ -61,7 +75,7 @@ def main():
                              " crosslistings.courseid ")
 
                 stmt_str, parameters = process_arguments(
-                    stmt_str, None, None, None, None)
+                    stmt_str, dept, num, area, title)
 
                 cursor.execute(stmt_str, parameters)
 

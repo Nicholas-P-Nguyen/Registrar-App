@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registrar's Office Class Search</title>
+    </head>
+    <body>
+        <h1>Registrar's Office</h1>
+        <hr>
+        <h2>Class Details</h2>
+
+        <!-- Printing the Class Details -->
+
+        {% for field, query_result in classdetails.items() %}
+        <strong>{{field}}</strong> {{query_result}}
+        <br>
+        {% endfor %}
+
+        <h2>Course Details</h2>
+
+        <strong>Course Id</strong> {{courseid}}
+        <br>
+
+        <!-- Printing the Department and Number -->
+        {% for dept_num in deptnum %}
+        <strong>Dept and Number</strong> {{dept_num}}
+        <br>
+        {% endfor %}
+
+        <!-- Printing the Course Details -->
+         {% for field, query_result in coursedetails.items() %}
+         <strong>{{field}}</strong> {{query_result}}
+         <br>
+         {% endfor %}
+
+         <!-- Printing the Course Details -->
+          {% for prof in profs %}
+          <strong>Professor</strong> {{prof}}
+          <br>
+          {% endfor %}
+
+
+
+    </body>
+</html>
