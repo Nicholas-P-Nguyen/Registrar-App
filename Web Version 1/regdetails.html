@@ -8,42 +8,59 @@
         <h1>Registrar's Office</h1>
         <hr>
         <h2>Class Details</h2>
-
-        <!-- Printing the Class Details -->
-        {% for field, query_result in classdetails.items() %}
-        <strong>{{field}}</strong> {{query_result}}
-        <br>
-        {% endfor %}
+        <table>
+            <tbody> 
+                <!-- Printing the Class Details -->
+                {% for field, query_result in classdetails.items() %}
+                <tr>
+                    <td><strong>{{field}}</strong> </td> <td>{{query_result}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         <h2>Course Details</h2>
 
-        <strong>Course Id</strong> {{courseid}}
-        <br>
+        <style>
+            table {
+                border: 1px solid black;
+            }
+            td {
+                border: 1px solid black;
+            }
+        </style>
 
-        <!-- Printing the Department and Number -->
-        {% for dept_num in deptnum %}
-        <strong>Dept and Number</strong> {{dept_num}}
-        <br>
-        {% endfor %}
+        <table>
+            <tbody>
+                <!-- Printing the CourseID -->
+                <tr>
+                    <td><strong>Course Id</strong></td> <td>{{courseid}}</td>
+                </tr>
 
-        <!-- Printing the Course Details -->
-         {% for field, query_result in coursedetails.items() %}
-         <strong>{{field}}</strong> {{query_result}}
-         <br>
-         {% endfor %}
+                <!-- Printing the Department and Number -->
+                {% for dept_num in deptnum %}
+                <tr>
+                    <td><strong>Dept and Number</strong></td> <td>{{dept_num}}</td>
+                </tr>
+                {% endfor %}
 
-         <!-- Printing the Course Details -->
-          {% for prof in profs %}
-          <strong>Professor</strong> {{prof}}
-          <br>
-          {% endfor %}
+                <!-- Printing the Course Details -->
+                {% for field, query_result in coursedetails.items() %}
+                <tr>
+                    <td><strong>{{field}}</strong> </td> <td>{{query_result}}</td>
+                </tr>
+                {% endfor %}
 
-          <hr>
-          Click here to do <a href="http://localhost:55333/index?dept={{prev_dept}}&coursenum={{prev_coursenum}}&area={{prev_area}}&title={{prev_title}}">another class search</a>
-
-          {% include 'footer.html' %}
-
-
-
+                <!-- Printing the Professors -->
+                {% for prof in profs %}
+                <tr>
+                    <td><strong>Professor</strong></td> <td>{{prof}}</td>
+                </tr>
+                {% endfor %}   
+            </tbody>
+        </table>
+        <hr>
+        Click here to do <a href="http://localhost:55333/index?dept={{prev_dept}}&coursenum={{prev_coursenum}}&area={{prev_area}}&title={{prev_title}}">another class search</a>
+        {% include 'footer.html' %}
     </body>
 </html>

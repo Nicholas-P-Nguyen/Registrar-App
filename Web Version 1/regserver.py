@@ -1,15 +1,7 @@
-
 '''Implementing the regserver.py as specified'''
 
 import argparse
-import contextlib
-import os
-import sqlite3
 import sys
-import socket
-import json
-import threading
-import time
 import flask
 
 import courseoverviews
@@ -18,11 +10,6 @@ import classdetails
 import coursedetails
 
 
-#-----------------------------------------------------------------------
-# Global Variables
-#-----------------------------------------------------------------------
-IODELAY = int(os.environ.get('IODELAY', 0))
-CDELAY = int(os.environ.get('CDELAY', 0))
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
 #-----------------------------------------------------------------------
