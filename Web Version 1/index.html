@@ -6,16 +6,32 @@
     </head>
     <body>
         {% include 'header.html' %}
-        {% include 'searchform.html' %}
 
+        <!-- Search form -->
+        <form action="/index" method="get">
+            Dept: 
+            <input type="text" name="dept" value="{{ prev_dept }}" autofocus>
+        <br>
+            Number: 
+            <input type="text" name="coursenum" value="{{ prev_num }}" autofocus>
+        <br>
+            Area: 
+            <input type="text" name="area" value="{{ prev_area }}" autofocus>
+        <br>
+            Title: 
+            <input type="text" name="title" value="{{ prev_title }}" autofocus>
+        <br>
+        <input type="submit" value="Go">
+        </form>
+        <hr>
+        
         <strong>ClassId</strong> <strong>Dept</strong> <strong>Num</strong> <strong>Area</strong> <strong>Title</strong>
         <br>
-            
+        <!-- Search results -->
         {% for row in table %}
-        <a href="/regdetails/{{ row['classid'] }}">{{ row['classid'] }}</a>{{ row['dept'] }} {{ row['coursenum'] }} {{ row['area'] }} {{ row['title'] }}
-        
+        <a href="/regdetails/{{ row['classid'] }}">{{ row['classid'] }}</a>{{ row['dept'] }} {{ row['coursenum'] }} {{ row['area'] }} {{ row['title'] }}   
         <br>
-    {% endfor %}
+        {% endfor %}
     
         {% include 'footer.html' %}
     </body>

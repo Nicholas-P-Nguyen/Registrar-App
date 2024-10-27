@@ -10,7 +10,6 @@
         <h2>Class Details</h2>
 
         <!-- Printing the Class Details -->
-
         {% for field, query_result in classdetails.items() %}
         <strong>{{field}}</strong> {{query_result}}
         <br>
@@ -38,6 +37,11 @@
           <strong>Professor</strong> {{prof}}
           <br>
           {% endfor %}
+
+          <hr>
+          Click here to do <a href="http://localhost:55333/index?dept={{prev_dept}}&coursenum={{prev_coursenum}}&area={{prev_area}}&title={{prev_title}}">another class search</a>
+
+          {% include 'footer.html' %}
 
 
 
