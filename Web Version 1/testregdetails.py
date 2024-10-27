@@ -105,8 +105,32 @@ def main():
     driver = create_driver(browser, mode)
 
     run_test(server_url, driver, '8321')
+    run_test(server_url, driver, '9032')
+    run_test(server_url, driver, '8293')
+    run_test(server_url, driver, '9977')
+    run_test(server_url, driver, '10188')
+    run_test(server_url, driver, '9012')
 
-    # Add more tests here.
+    # Testing class ID that doesn't exist
+    run_test(server_url, driver, '01010444')
+    run_test(server_url, driver, '')  
+    run_test(server_url, driver, '8321 9032')  
+    run_test(server_url, driver, 'abc123') 
+    run_test(server_url, driver, '9032')
+    run_test(server_url, driver, 'abcdefg')
+
+    # # Testing database cannot be opened
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # os.remove('reg.sqlite')
+    # run_test(server_url, driver, '9012')
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
+    # # Testing corrupted database
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
+    # run_test(server_url, driver, '8321')
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
 
     driver.quit()
 
