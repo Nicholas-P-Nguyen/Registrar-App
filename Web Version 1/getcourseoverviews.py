@@ -36,6 +36,7 @@ def get_escaped_title(title):
 
 def process_arguments(stmt_str, dept=None, num=None,
                       area=None, title=None):
+
     parameters = []
     if dept:
         stmt_str += "AND dept LIKE ? "
@@ -83,14 +84,12 @@ def main(dept, num, area, title):
                 return create_overview_dict(row, cursor)
 
     except sqlite3.OperationalError as op_ex:
-        print(sys.argv[0] + ":", op_ex, file=sys.stderr)
-        sys.exit(1)
+        raise op_ex
     except sqlite3.DatabaseError as db_ex:
-        print(sys.argv[0] + ":", db_ex, file=sys.stderr)
-        sys.exit(1)
+        raise db_ex
     except Exception as ex:
-        print(ex, file=sys.stderr)
-        sys.exit(1)
+            print(ex, file=sys.stderr)
+            sys.exit(1)
 
 #-----------------------------------------------------------------------
 

@@ -6901,3 +6901,13 @@ ClassId Dept Num Area Title
 9872 REL 399 EM God and Human Nature
 9635 SOC 320 EM Radical Political Thought
 10153 WWS 301 EM Ethics and Public Policy
+------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/npn/Princeton University/Junior Fall '24/COS 333/Registrar-App/Web Version 1/testregoverviews.py", line 193, in <module>
+    main()
+  File "/Users/npn/Princeton University/Junior Fall '24/COS 333/Registrar-App/Web Version 1/testregoverviews.py", line 183, in main
+    run_test(driver, 'Independent Study')
+  File "/Users/npn/Princeton University/Junior Fall '24/COS 333/Registrar-App/Web Version 1/testregoverviews.py", line 88, in run_test
+    for key, value in input_values.items():
+                      ^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'items'

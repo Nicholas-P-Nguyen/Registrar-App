@@ -60,14 +60,28 @@ def index():
     
 @app.route('/regdetails', methods=['GET'])
 def regdetails():
-    classid = flask.request.args.get('classid').strip()
-    if not classid.isdigit():
+    classid = flask.request.args.get('classid', None)
+
+    if classid is None or not classid:
+        message = 'missing classid'
         html_code = flask.render_template(
-            'nonintclassid.html'
+            'error.html',
+            message=message
         )
         response = flask.make_response(html_code)
         return response
+        
+    if not classid.isdigit():
+        message = 'non-integer classid'
+        html_code = flask.render_template(
+            'error.html',
+            message=message
+        )
+        response = flask.make_response(html_code)
+        return response
+    
     try:
+        classid = classid.strip()
         class_details, course_id = getclassdetails.main(classid)
         if class_details is None and course_id is None:
             html_code = flask.render_template(
@@ -86,7 +100,8 @@ def regdetails():
         prev_area = flask.request.cookies.get('prev_area', '')
         prev_title = flask.request.cookies.get('prev_title', '')
 
-        
+        port = app.config.get('PORT')
+
         html_code = flask.render_template(
             'regdetails.html',
             classdetails=class_details,
@@ -97,7 +112,8 @@ def regdetails():
             prev_dept=prev_dept,
             prev_coursenum=prev_coursenum,
             prev_area=prev_area,
-            prev_title=prev_title
+            prev_title=prev_title,
+            port=port
         )
         
         response = flask.make_response(html_code)
@@ -120,6 +136,8 @@ def main():
     parser.add_argument('port', type=int, help='the port'
                         ' at which the server should listen')
     args = parser.parse_args()
+
+    app.config['PORT'] = args.port
 
     try:
         app.run(host='127.0.0.1', port=args.port, debug=True)

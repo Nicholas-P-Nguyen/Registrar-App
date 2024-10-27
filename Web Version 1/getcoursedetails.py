@@ -1,8 +1,7 @@
 import contextlib
 import sqlite3
-import argparse
 import sys
-import textwrap
+
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
@@ -76,11 +75,9 @@ def main(classid):
 
             
     except sqlite3.OperationalError as op_ex:
-        print(sys.argv[0] + ":", op_ex, file=sys.stderr)
-        sys.exit(1)
+        raise op_ex
     except sqlite3.DatabaseError as db_ex:
-        print(sys.argv[0] + ":", db_ex, file=sys.stderr)
-        sys.exit(1)
+        raise db_ex
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)

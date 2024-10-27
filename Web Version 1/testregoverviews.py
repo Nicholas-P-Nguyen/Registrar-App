@@ -179,23 +179,7 @@ def main():
     run_test(driver, {'dept': 'Om'})
     run_test(driver, {'area': 'm'})
 
-    # # Testing database if reg.sqlite file doesn't exist
-    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    # os.remove('reg.sqlite')
 
-    # run_test(driver, {'dept': 'COS'})
-    # run_test(driver, {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
-
-    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
-
-    # # Testing database if it is flawed
-    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
-    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
-
-    # run_test(driver, {'dept': 'COS'})
-    # run_test(driver, {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
-
-    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
 
     driver.quit()
 
