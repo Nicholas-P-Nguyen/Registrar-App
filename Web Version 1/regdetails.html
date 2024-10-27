@@ -8,7 +8,7 @@
         <h1>Registrar's Office</h1>
         <hr>
         <h2>Class Details</h2>
-        <table>
+        <table id="classDetailsTable">
             <tbody> 
                 <!-- Printing the Class Details -->
                 {% for field, query_result in classdetails.items() %}
@@ -30,7 +30,7 @@
             }
         </style>
 
-        <table>
+        <table id="courseDetailsTables">
             <tbody>
                 <!-- Printing the CourseID -->
                 <tr>

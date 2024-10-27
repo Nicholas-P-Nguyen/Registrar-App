@@ -6,6 +6,7 @@
     </head>
     <body>
         {% include 'header.html' %}
+
         <style>
             table.results {
                 border: 1px solid black;
@@ -21,30 +22,30 @@
             <tbody>
                 <tr>
                    <td align="right">Dept:</td> 
-                   <td><input type="text" name="dept" value="{{ prev_dept }}" autofocus></td>
+                   <td><input type="text" name="dept" id="deptIntput" value="{{ prev_dept }}" autofocus></td>
                 </tr>
                 <tr>
                     <td align="right">Number:</td>
-                    <td><input type="text" name="coursenum" value="{{ prev_num }}" autofocus></td>
+                    <td><input type="text" name="coursenum" id="coursenumInput" value="{{ prev_num }}" autofocus></td>
                 </tr>
                 <tr>
                     <td align="right">Area:</td>
-                    <td><input type="text" name="area" value="{{ prev_area }}" autofocus></td>
+                    <td><input type="text" name="area" id="areaInput" value="{{ prev_area }}" autofocus></td>
                 </tr>
                 <tr>
                     <td align="right">Title:</td>
-                    <td><input type="text" name="title" value="{{ prev_title }}" autofocus></td>
+                    <td><input type="text" name="title" id="titleInput" value="{{ prev_title }}" autofocus></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Go"></td>
+                    <td><input type="submit" id="submitButton" value="Go"></td>
                 </tr>
             </tbody>
         </table>  
         </form>
         <hr>
         <!-- Search results -->
-        <table class="results">
+        <table class="results" id="overviewsTable">
             <thead>
                <tr>
                 <td><strong>ClassId</strong></td>
@@ -57,7 +58,7 @@
             <tbody>
                 {% for row in table %}
                 <tr>
-                    <td><a href="/regdetails/{{ row['classid'] }}">{{ row['classid'] }}</a></td>
+                    <td><a href="/regdetails?classid={{ row['classid'] }}">{{ row['classid'] }}</a></td>
                     <td>{{ row['dept'] }}</td>
                     <td>{{ row['coursenum'] }}</td>
                     <td>{{ row['area'] }}</td>

@@ -79,7 +79,7 @@ def main(dept, num, area, title):
 
                 cursor.execute(stmt_str, parameters)
 
-                row = cursor.fetchone()
+                row = cursor.fetchone()  
                 return create_overview_dict(row, cursor)
 
     except sqlite3.OperationalError as op_ex:

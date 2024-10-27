@@ -18,6 +18,11 @@ def main(classid):
 
                 cursor.execute(stmt_str, [classid])
                 row = cursor.fetchone()
+
+                if row is None:
+                    return None, None
+                
+
                 course_id = row[6]
                 
                 while True:
@@ -28,10 +33,7 @@ def main(classid):
                     row = cursor.fetchone()
                 
                 return query_to_result, course_id
-                
-
-
-            
+                       
     except sqlite3.OperationalError as op_ex:
         print(sys.argv[0] + ":", op_ex, file=sys.stderr)
         sys.exit(1)
