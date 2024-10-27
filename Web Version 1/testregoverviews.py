@@ -4,6 +4,8 @@
 #-----------------------------------------------------------------------
 
 import sys
+import os
+import shutil
 import argparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -136,8 +138,64 @@ def main():
     run_test(driver, {'dept':'COS'})
     run_test(driver,
         {'dept':'COS', 'coursenum':'2', 'area':'qr', 'title':'intro'})
+    # Testing subsets of 4
+    run_test(driver, {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
 
-    # Add more tests here.
+    # Testing subsets of 3
+    run_test(driver, {'dept': 'COS', 'num': '2', 'area': 'qr'})
+    run_test(driver, {'dept': 'COS', 'num': '2', 'title': 'intro'})
+    run_test(driver, {'dept': 'COS', 'area': 'qr', 'title': 'intro'})
+    run_test(driver, {'num': '2', 'area': 'qr', 'title': 'intro'})
+
+    # Testing subsets of 2
+    run_test(driver, {'dept': 'COS', 'num': '2'})
+    run_test(driver, {'dept': 'COS', 'area': 'qr'})
+    run_test(driver, {'dept': 'COS', 'title': 'intro'})
+    run_test(driver, {'num': '2', 'area': 'qr'})
+    run_test(driver, {'num': '2', 'title': 'intro'})
+    run_test(driver, {'area': 'qr', 'title': 'intro'})
+
+    # Testing subsets of 1
+    run_test(driver, {'dept': 'COS'})
+    run_test(driver, {'area': 'qr'})
+    run_test(driver, {'title': 'intro'})
+    run_test(driver, {'num': '2'})
+
+    # Testing wildcard characters
+    run_test(driver, {'title': 'c%S'})
+    run_test(driver, {'title': 'C_S'})
+
+    # Testing different argument combinations
+    run_test(driver, {'area': 'qr'})
+    run_test(driver, {'area': 'qr'})
+    run_test(driver, {'area': 'qr'})
+    run_test(driver, {'area': 'qr'})
+    run_test(driver, {'area': ''})
+    run_test(driver, {'area': 'qr', 'dept': ''})
+    run_test(driver, {'area': '', 'dept': 'cos'})
+    run_test(driver, {'x': ''})
+
+    # Testing cases that failed in assignment 1
+    run_test(driver, {'dept': 'Om'})
+    run_test(driver, {'area': 'm'})
+
+    # # Testing database if reg.sqlite file doesn't exist
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # os.remove('reg.sqlite')
+
+    # run_test(driver, {'dept': 'COS'})
+    # run_test(driver, {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
+
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
+
+    # # Testing database if it is flawed
+    # shutil.copy('reg.sqlite', 'regbackup.sqlite')
+    # shutil.copy('regflawed.sqlite', 'reg.sqlite')
+
+    # run_test(driver, {'dept': 'COS'})
+    # run_test(driver, {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
+
+    # shutil.copy('regbackup.sqlite', 'reg.sqlite')
 
     driver.quit()
 
