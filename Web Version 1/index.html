@@ -6,33 +6,57 @@
     </head>
     <body>
         {% include 'header.html' %}
-
         <!-- Search form -->
         <form action="/index" method="get">
-            Dept: 
-            <input type="text" name="dept" value="{{ prev_dept }}" autofocus>
-        <br>
-            Number: 
-            <input type="text" name="coursenum" value="{{ prev_num }}" autofocus>
-        <br>
-            Area: 
-            <input type="text" name="area" value="{{ prev_area }}" autofocus>
-        <br>
-            Title: 
-            <input type="text" name="title" value="{{ prev_title }}" autofocus>
-        <br>
-        <input type="submit" value="Go">
+        <table>
+            <tbody>
+                <tr>
+                   <td align="right">Dept:</td> 
+                   <td><input type="text" name="dept" value="{{ prev_dept }}" autofocus></td>
+                </tr>
+                <tr>
+                    <td align="right">Number:</td>
+                    <td><input type="text" name="coursenum" value="{{ prev_num }}" autofocus></td>
+                </tr>
+                <tr>
+                    <td align="right">Area:</td>
+                    <td><input type="text" name="area" value="{{ prev_area }}" autofocus></td>
+                </tr>
+                <tr>
+                    <td align="right">Title:</td>
+                    <td><input type="text" name="title" value="{{ prev_title }}" autofocus></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Go"></td>
+                </tr>
+            </tbody>
+        </table>  
         </form>
         <hr>
-        
-        <strong>ClassId</strong> <strong>Dept</strong> <strong>Num</strong> <strong>Area</strong> <strong>Title</strong>
-        <br>
         <!-- Search results -->
-        {% for row in table %}
-        <a href="/regdetails/{{ row['classid'] }}">{{ row['classid'] }}</a>{{ row['dept'] }} {{ row['coursenum'] }} {{ row['area'] }} {{ row['title'] }}   
-        <br>
-        {% endfor %}
-    
+        <table>
+            <thead>
+               <tr>
+                <td><strong>ClassId</strong></td>
+                <td><strong>Dept</strong></td>
+                <td><strong>Num</strong></td>
+                <td><strong>Area</strong></td>
+                <td><strong>Title</strong></td>
+               </tr> 
+            </thead>
+            <tbody>
+                {% for row in table %}
+                <tr>
+                    <td><a href="/regdetails/{{ row['classid'] }}">{{ row['classid'] }}</a></td>
+                    <td>{{ row['dept'] }}</td>
+                    <td>{{ row['coursenum'] }}</td>
+                    <td>{{ row['area'] }}</td>
+                    <td>{{ row['title'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% include 'footer.html' %}
     </body>
 </html>
