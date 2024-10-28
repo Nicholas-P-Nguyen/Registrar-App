@@ -2,10 +2,9 @@
 
 import argparse
 import sys
-import flask
 import sqlite3
+import flask
 
-import getcourseoverviews
 import getcourseoverviews
 import getclassdetails
 import getcoursedetails
@@ -46,8 +45,9 @@ def index():
         response.set_cookie('prev_coursenum')
         response.set_cookie('prev_area', area)
         response.set_cookie('prev_title', title)
-        
+
         return response
+
     except sqlite3.Error as db_ex:
         print(sys.argv[0] + ":", db_ex, file=sys.stderr)
         html_code = flask.render_template(
@@ -57,7 +57,7 @@ def index():
         return response
     except Exception as ex:
         print(ex, file=sys.stderr)
-    
+
 @app.route('/regdetails', methods=['GET'])
 def regdetails():
     classid = flask.request.args.get('classid', None)
@@ -70,7 +70,7 @@ def regdetails():
         )
         response = flask.make_response(html_code)
         return response
-        
+
     if not classid.isdigit():
         message = 'non-integer classid'
         html_code = flask.render_template(
@@ -79,7 +79,7 @@ def regdetails():
         )
         response = flask.make_response(html_code)
         return response
-    
+
     try:
         classid = classid.strip()
         class_details, course_id = getclassdetails.main(classid)
@@ -93,7 +93,7 @@ def regdetails():
 
 
         dept_num, course_details, profs = getcoursedetails.main(classid)
-        
+
 
         prev_dept = flask.request.cookies.get('prev_dept', '')
         prev_coursenum = flask.request.cookies.get('prev_coursenum', '')
@@ -115,10 +115,10 @@ def regdetails():
             prev_title=prev_title,
             port=port
         )
-        
+
         response = flask.make_response(html_code)
         return response
-    
+
     except sqlite3.Error as db_ex:
         print(sys.argv[0] + ":", db_ex, file=sys.stderr)
         html_code = flask.render_template(
@@ -150,4 +150,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

@@ -1,2 +1,16 @@
+David Beeson and Nick Nguyen
+
+Nick: David and I worked to create runserver program using the flask headers. We both consulted the lecture slides to understand the flask framework, and helped each other understand how to apply it to our server context. I composed most of the testing cases in testregdetails and testregoverviews, and we worked together on the database error testing. We also worked together on reusing the old methods from previou assignments for course details and overviews
+
+David: As mentioed above, nick and I worked together to create the run server program utilizing the lecture slides to learn the flask framework. I help a bit on creating the html templates, but mostly focused on error catching and formatting issues with the html. I also helped nick with some of the testing for cases that he didn't catch. I also contributed to the database error testing, and helped out where needed in the classdetails, coursedtails, and course overview programs.
+
+Person sources:
+na/
+
+Online Sources:
 https://flask.palletsprojects.com/en/stable/config/
 https://www.geeksforgeeks.org/flask-cookies/
+
+15 hours
+
+The assignment helped us learn flask and jinja in a more realistic environment!

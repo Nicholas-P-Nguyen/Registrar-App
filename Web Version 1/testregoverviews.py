@@ -4,11 +4,8 @@
 #-----------------------------------------------------------------------
 
 import sys
-import os
-import shutil
 import argparse
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.firefox.service import Service as FirefoxService

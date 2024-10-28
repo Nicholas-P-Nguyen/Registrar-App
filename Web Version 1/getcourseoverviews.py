@@ -63,7 +63,7 @@ def process_arguments(stmt_str, dept=None, num=None,
 
 #-----------------------------------------------------------------------
 
-def main(dept, num, area, title):
+def main(dept = None, num = None, area = None, title = None):
     try:
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
                              uri=True) as connection:
@@ -80,7 +80,7 @@ def main(dept, num, area, title):
 
                 cursor.execute(stmt_str, parameters)
 
-                row = cursor.fetchone()  
+                row = cursor.fetchone()
                 return create_overview_dict(row, cursor)
 
     except sqlite3.OperationalError as op_ex:
@@ -88,8 +88,8 @@ def main(dept, num, area, title):
     except sqlite3.DatabaseError as db_ex:
         raise db_ex
     except Exception as ex:
-            print(ex, file=sys.stderr)
-            sys.exit(1)
+        print(ex, file=sys.stderr)
+        sys.exit(1)
 
 #-----------------------------------------------------------------------
 

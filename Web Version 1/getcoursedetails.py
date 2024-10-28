@@ -31,7 +31,7 @@ def get_query_stmt_course_details(classid, cursor):
 
     cursor.execute(stmt_str_course, [classid])
     row = cursor.fetchone()
-    
+
     details_fields = ['Area', 'Title', 'Description', 'Prerequisites']
     temp_dict = {}
     while True:
@@ -40,7 +40,7 @@ def get_query_stmt_course_details(classid, cursor):
         for field, query_result in zip(details_fields, row):
             temp_dict[field] = query_result
         row = cursor.fetchone()
-    
+
     return temp_dict
 
 def get_query_stmt_prof(classid, cursor):
@@ -67,13 +67,13 @@ def main(classid):
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
                              uri=True) as connection:
             with contextlib.closing(connection.cursor()) as cursor:
-
                 dept_num = get_query_stmt_dept_num(classid, cursor)
-                course_details = get_query_stmt_course_details(classid, cursor)
+                course_details = get_query_stmt_course_details(
+                    classid, cursor)
                 profs = get_query_stmt_prof(classid, cursor)
                 return dept_num, course_details, profs
 
-            
+
     except sqlite3.OperationalError as op_ex:
         raise op_ex
     except sqlite3.DatabaseError as db_ex:
