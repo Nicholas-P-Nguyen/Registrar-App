@@ -8,7 +8,7 @@ ESCAPE = '\'\\\''
 WILDCARD_CHARACTERS = {'%', '_'}
 
 def create_overview_dict(row, cursor):
-    output = []
+    output = [True, []]
     course_fields = ['classid', 'dept', 'coursenum',
                     'area', 'title']
     while True:
@@ -17,7 +17,7 @@ def create_overview_dict(row, cursor):
         temp_dict = {}
         for field, query_result in zip(course_fields, row):
             temp_dict[field] = query_result
-        output.append(temp_dict)
+        output[1].append(temp_dict)
         row = cursor.fetchone()
     return output
 
