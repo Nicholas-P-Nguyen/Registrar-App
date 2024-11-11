@@ -5,6 +5,8 @@ import sqlite3
 import json
 
 import getcourseoverviews
+import getclassdetails
+import getcoursedetails
 
 DATABASE_URL = 'file:reg.sqlite?mode=rw'
 
@@ -30,7 +32,18 @@ def regoverviews():
     response.headers['Content-Type'] = 'application/json'
     return response
 
+@app.route('/regdetails/<classid>', methods=['GET'])
+def regdetails(classid):
+    query_to_results = {}
+    getclassdetails.main(classid, query_to_results)
+    getcoursedetails.main(classid, query_to_results)
+    details_results = [True, query_to_results]
 
+    out_json_doc = json.dumps(details_results)
+    response = flask.make_response(out_json_doc)
+    response.headers['Content-Type'] = 'application/json'
+    return response
+    
 def main():
     parser = argparse.ArgumentParser(description='The registrar application')
     parser.add_argument('port', type=int, help='the port at which the server should listen')
