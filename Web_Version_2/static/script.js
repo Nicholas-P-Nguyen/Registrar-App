@@ -15,14 +15,17 @@ function getDetails(classid) {
             let html = convertDetailsToHtml(details[1]);
             $('#classDetailsModalBody').html(html);
             $('#detailsModal').modal('show');
-
+        }
+        else {
+            let error = details[1];
+            alert(error);
         }
     }
 
     function convertDetailsToHtml(details) {
         let template = `
         <h2>Class Details</h2>
-        <table id="classDetailsTable">
+        <table class="table table-striped" id="classDetailsTable">
         <tr>
             <td><strong>Class Id</strong></td>
             <td>{{details.classid}}</td>
@@ -50,7 +53,7 @@ function getDetails(classid) {
         </table>
 
         <h2>Course Details</h2>
-        <table id="courseDetailsTable">
+        <table class="table table-striped" id="courseDetailsTable">
         <tr>
             <td><strong>Course Id</strong></td>
             <td>{{details.courseid}}</td>
@@ -116,11 +119,15 @@ function handleResponse(overviews) {
         let html = convertOverviewsToHtml(overviews[1])
         $('#resultOverviews').html(html)
     }
+    else {
+        let error = overviews[1];
+        alert(error);
+    }
 }
 
 function convertOverviewsToHtml(overviews) {
     let template = ` 
-    <table class="results" id="overviewsTable">
+    <table class="table table-striped" id="overviewsTable">
         <thead>
             <tr>
                 <td><strong>ClassId</strong></td>

@@ -30,11 +30,8 @@ def main(classid, query_to_result):
                         query_to_result[field] = query_result
                     row = cursor.fetchone()
 
-
-    except sqlite3.OperationalError as op_ex:
-        raise op_ex
-    except sqlite3.DatabaseError as db_ex:
-        raise db_ex
+    except sqlite3.Error as e:
+        raise e
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)

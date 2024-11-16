@@ -83,10 +83,8 @@ def main(dept = None, num = None, area = None, title = None):
                 row = cursor.fetchone()
                 return create_overview_dict(row, cursor)
 
-    except sqlite3.OperationalError as op_ex:
-        raise op_ex
-    except sqlite3.DatabaseError as db_ex:
-        raise db_ex
+    except sqlite3.Error as e:
+        raise e
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)

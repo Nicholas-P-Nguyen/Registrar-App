@@ -72,13 +72,8 @@ def main(classid, query_to_result):
                 get_query_stmt_course_details(classid, cursor, query_to_result)
                 get_query_stmt_prof(classid, cursor, query_to_result)
 
-
-
-
-    except sqlite3.OperationalError as op_ex:
-        raise op_ex
-    except sqlite3.DatabaseError as db_ex:
-        raise db_ex
+    except sqlite3.Error as e:
+        raise e
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)
