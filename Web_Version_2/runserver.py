@@ -40,11 +40,38 @@ def regoverviews():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-@app.route('/regdetails/<classid>', methods=['GET'])
-def regdetails(classid):
+@app.route('/regdetails', methods=['GET'])
+def regdetails():
+    classid = flask.request.args.get('classid', None)
+
+    if classid is None or not classid:
+        message = 'missing classid'
+        out_err_json_doc = [False, message]
+        out_err_json_str = json.dumps(out_err_json_doc)
+        response = flask.make_response(out_err_json_str)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+        
+    if not classid.isdigit():
+        message = 'non-integer classid'
+        out_err_json_doc = [False, message]
+        out_err_json_str = json.dumps(out_err_json_doc)
+        response = flask.make_response(out_err_json_str)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+
     try: 
+        classid = classid.strip()
         query_to_results = {}
         getclassdetails.main(classid, query_to_results)
+        if not query_to_results[1].get('classid'):
+            message = 'no class with classid X exists'
+            out_err_json_doc = [False, message]
+            out_err_json_str = json.dumps(out_err_json_doc)
+            response = flask.make_response(out_err_json_str)
+            response.headers['Content-Type'] = 'application/json'
+            return response
+
         getcoursedetails.main(classid, query_to_results)
         details_results = [True, query_to_results]
 
