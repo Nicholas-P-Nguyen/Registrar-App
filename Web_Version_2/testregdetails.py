@@ -129,8 +129,12 @@ def main():
     driver = create_driver(browser, mode)
 
     run_test(server_url, delay, driver, ['COS', '333', '8321'])
-
-    # Add more tests here.
+    run_test(server_url, delay, driver, ['CHM', '233', '9032'])
+    run_test(server_url, delay, driver, ['COS', '126', '8293'])
+    run_test(server_url, delay, driver, ['SPA', '321', '9977'])
+    run_test(server_url, delay, driver, ['WWS', '402', '10188'])
+    run_test(server_url, delay, driver, ['MOG', '102', '9012'])
+    run_test(server_url, delay, driver, ['HLS', '102', '9012'])
 
     driver.quit()
 

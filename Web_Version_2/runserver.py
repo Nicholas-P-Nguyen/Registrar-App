@@ -22,10 +22,10 @@ def index():
 @app.route('/regoverviews', methods=['GET'])
 def regoverviews():
     try: 
-        dept = flask.request.args.get('dept', '').strip()
-        coursenum = flask.request.args.get('coursenum', '').strip()
-        area = flask.request.args.get('area', '').strip()
-        title = flask.request.args.get('title', '').strip()
+        dept = flask.request.args.get('dept', '')
+        coursenum = flask.request.args.get('coursenum', '')
+        area = flask.request.args.get('area', '')
+        title = flask.request.args.get('title', '')
 
         overviews_result = getcourseoverviews.main(dept, coursenum, area, title)
 

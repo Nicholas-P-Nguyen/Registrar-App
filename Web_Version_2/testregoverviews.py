@@ -157,12 +157,77 @@ def main():
 
     driver.get(server_url)
 
-    run_test(delay, driver,
-        {'dept':'COS'})
-    run_test(delay, driver,
-        {'dept':'COS', 'coursenum':'2', 'area':'qr', 'title':'intro'})
 
-    # Add more tests here.
+    run_test(delay, driver, 
+        {'dept': 'COS'})
+    run_test(delay, driver, 
+        {'dept': 'COS', 'coursenum': '2', 'area': 'qr', 'title': 'intro'})
+
+    # Testing subsets of 4
+    run_test(delay, driver, 
+        {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
+
+    # Testing subsets of 3
+    run_test(delay, driver, 
+        {'dept': 'COS', 'num': '2', 'area': 'qr'})
+    run_test(delay, driver, 
+        {'dept': 'COS', 'num': '2', 'title': 'intro'})
+    run_test(delay, driver, 
+        {'dept': 'COS', 'area': 'qr', 'title': 'intro'})
+    run_test(delay, driver, 
+        {'num': '2', 'area': 'qr', 'title': 'intro'})
+
+    # Testing subsets of 2
+    run_test(delay, driver, 
+        {'dept': 'COS', 'num': '2'})
+    run_test(delay, driver, 
+        {'dept': 'COS', 'area': 'qr'})
+    run_test(delay, driver, 
+        {'dept': 'COS', 'title': 'intro'})
+    run_test(delay, driver, 
+        {'num': '2', 'area': 'qr'})
+    run_test(delay, driver, 
+        {'num': '2', 'title': 'intro'})
+    run_test(delay, driver, 
+        {'area': 'qr', 'title': 'intro'})
+
+    # Testing subsets of 1
+    run_test(delay, driver, 
+        {'dept': 'COS'})
+    run_test(delay, driver, 
+        {'area': 'qr'})
+    run_test(delay, driver, 
+        {'title': 'intro'})
+    run_test(delay, driver, 
+        {'num': '2'})
+
+    # Testing wildcard characters
+    run_test(delay, driver, 
+        {'title': 'c%S'})
+    run_test(delay, driver, 
+        {'title': 'C_S'})
+
+    # Testing different argument combinations
+    run_test(delay, driver, {'area': 'qr'})
+    run_test(delay, driver, {'area': 'qr'})
+    run_test(delay, driver, {'area': 'qr'})
+    run_test(delay, driver, {'area': 'qr'})
+    run_test(delay, driver, {'area': ''})
+    run_test(delay, driver, {'area': 'qr', 'dept': ''})
+    run_test(delay, driver, {'area': '', 'dept': 'cos'})
+    run_test(delay, driver, {'x': ''})
+
+    # Testing cases that failed in assignment 1
+    run_test(delay, driver, {'dept': 'Om'})
+    run_test(delay, driver, {'area': 'm'})
+
+    # Testing cases that failed in assignment 3
+    run_test(delay, driver, {'title': 'Independent Study'})
+    run_test(delay, driver, {'title': 'Independent Study '})
+    run_test(delay, driver, {'title': 'Independent Study  '})
+    run_test(delay, driver, {'title': ' Independent Study'})
+    run_test(delay, driver, {'title': '  Independent Study'})
+
 
     driver.quit()
 

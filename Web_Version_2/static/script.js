@@ -35,11 +35,11 @@ function getResultsDetails(classid) {
             <td>{{details.days}}</td>
         </tr>
         <tr>
-            <td><strong>Start Time</strong></td>
+            <td><strong>Start time</strong></td>
             <td>{{details.starttime}}</td>
         </tr>
         <tr>
-            <td><strong>End Time</strong></td>
+            <td><strong>End time</strong></td>
             <td>{{details.endtime}}</td>
         </tr>
         <tr>
@@ -82,7 +82,7 @@ function getResultsDetails(classid) {
         {{#details.profnames}}
             <tr>
                 <td><strong>Professor</strong></td>
-                <td>{{details.profnames}}</td>
+                <td>{{.}}</td>
             </tr>
         {{/details.profnames}}
         </table>
