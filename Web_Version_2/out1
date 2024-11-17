@@ -1,0 +1,49 @@
+-----------------
+dept: |COS|
+Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="deptInput"]"}
+  (Session info: chrome=130.0.6723.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+0   chromedriver                        0x0000000100f815dc cxxbridge1$str$ptr + 3653648
+1   chromedriver                        0x0000000100f79e3c cxxbridge1$str$ptr + 3623024
+2   chromedriver                        0x00000001009e4100 cxxbridge1$string$len + 88404
+3   chromedriver                        0x0000000100a2641c cxxbridge1$string$len + 359536
+4   chromedriver                        0x0000000100a5fba8 cxxbridge1$string$len + 594940
+5   chromedriver                        0x0000000100a1b0fc cxxbridge1$string$len + 313680
+6   chromedriver                        0x0000000100a1bd4c cxxbridge1$string$len + 316832
+7   chromedriver                        0x0000000100f4c64c cxxbridge1$str$ptr + 3436672
+8   chromedriver                        0x0000000100f4f988 cxxbridge1$str$ptr + 3449788
+9   chromedriver                        0x0000000100f33a5c cxxbridge1$str$ptr + 3335312
+10  chromedriver                        0x0000000100f5024c cxxbridge1$str$ptr + 3452032
+11  chromedriver                        0x0000000100f24ce8 cxxbridge1$str$ptr + 3274524
+12  chromedriver                        0x0000000100f6a9dc cxxbridge1$str$ptr + 3560464
+13  chromedriver                        0x0000000100f6ab58 cxxbridge1$str$ptr + 3560844
+14  chromedriver                        0x0000000100f79ad4 cxxbridge1$str$ptr + 3622152
+15  libsystem_pthread.dylib             0x00000001a00532e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001a004e0fc thread_start + 8
+
+-----------------
+dept: |COS|
+coursenum: |2|
+area: |qr|
+title: |intro|
+Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="deptInput"]"}
+  (Session info: chrome=130.0.6723.117); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+0   chromedriver                        0x0000000100f815dc cxxbridge1$str$ptr + 3653648
+1   chromedriver                        0x0000000100f79e3c cxxbridge1$str$ptr + 3623024
+2   chromedriver                        0x00000001009e4100 cxxbridge1$string$len + 88404
+3   chromedriver                        0x0000000100a2641c cxxbridge1$string$len + 359536
+4   chromedriver                        0x0000000100a5fba8 cxxbridge1$string$len + 594940
+5   chromedriver                        0x0000000100a1b0fc cxxbridge1$string$len + 313680
+6   chromedriver                        0x0000000100a1bd4c cxxbridge1$string$len + 316832
+7   chromedriver                        0x0000000100f4c64c cxxbridge1$str$ptr + 3436672
+8   chromedriver                        0x0000000100f4f988 cxxbridge1$str$ptr + 3449788
+9   chromedriver                        0x0000000100f33a5c cxxbridge1$str$ptr + 3335312
+10  chromedriver                        0x0000000100f5024c cxxbridge1$str$ptr + 3452032
+11  chromedriver                        0x0000000100f24ce8 cxxbridge1$str$ptr + 3274524
+12  chromedriver                        0x0000000100f6a9dc cxxbridge1$str$ptr + 3560464
+13  chromedriver                        0x0000000100f6ab58 cxxbridge1$str$ptr + 3560844
+14  chromedriver                        0x0000000100f79ad4 cxxbridge1$str$ptr + 3622152
+15  libsystem_pthread.dylib             0x00000001a00532e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001a004e0fc thread_start + 8
+

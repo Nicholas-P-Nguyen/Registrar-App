@@ -7,7 +7,7 @@
 // getDetails is triggered when user clicks on a button that specifies 
 // what class id the user clicked, passing in as argument the classid 
 let requestDetails = null;
-function getDetails(classid) {
+function getResultsDetails(classid) {
     function handleResponse(details) {
         let success = details[0];
 
@@ -91,8 +91,9 @@ function getDetails(classid) {
         let html = Mustache.render(template, map);
         return html
     }
+    let encodedClassid = encodeURIComponent(classid)
 
-    let url = '/regdetails/' + String(classid)
+    let url = '/regdetails?classid=' + encodedClassid
 
     if (requestDetails !== null) {
         requestDetails.abort();
@@ -140,7 +141,7 @@ function convertOverviewsToHtml(overviews) {
         <tbody>
             {{#overviews}}
             <tr>
-                <td><button id="{{classid}}" onclick="getDetails({{classid}})">{{classid}}</button></td>
+                <td><button id="button{{classid}}" onclick="getResultsDetails({{classid}})">{{classid}}</button></td>
                 <td>{{dept}}</td>
                 <td>{{coursenum}}</td>
                 <td>{{area}}</td>
