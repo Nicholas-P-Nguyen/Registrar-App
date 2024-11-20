@@ -22,7 +22,7 @@ def get_query_stmt_dept_num(classid, cursor, query_to_result):
         temp_dict = {'dept': row[0], 'coursenum': row[1]}
         temp_arr.append(temp_dict)
         row = cursor.fetchone()
-    
+
     query_to_result['deptcoursenums'] = temp_arr
     return temp_arr
 
@@ -68,9 +68,12 @@ def main(classid, query_to_result):
         with sqlite3.connect(DATABASE_URL, isolation_level=None,
                              uri=True) as connection:
             with contextlib.closing(connection.cursor()) as cursor:
-                get_query_stmt_dept_num(classid, cursor, query_to_result)
-                get_query_stmt_course_details(classid, cursor, query_to_result)
-                get_query_stmt_prof(classid, cursor, query_to_result)
+                get_query_stmt_dept_num(classid, cursor,
+                                        query_to_result)
+                get_query_stmt_course_details(classid, cursor,
+                                              query_to_result)
+                get_query_stmt_prof(classid, cursor,
+                                    query_to_result)
 
     except sqlite3.Error as e:
         raise e

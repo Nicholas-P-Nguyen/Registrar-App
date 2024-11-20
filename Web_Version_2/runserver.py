@@ -1,8 +1,8 @@
-import argparse
-import flask
 import sys
 import sqlite3
 import json
+import argparse
+import flask
 
 import getcourseoverviews
 import getclassdetails
@@ -21,21 +21,23 @@ def index():
 
 @app.route('/regoverviews', methods=['GET'])
 def regoverviews():
-    try: 
+    try:
         dept = flask.request.args.get('dept', '')
         coursenum = flask.request.args.get('coursenum', '')
         area = flask.request.args.get('area', '')
         title = flask.request.args.get('title', '')
 
-        overviews_result = getcourseoverviews.main(dept, coursenum, area, title)
+        overviews_result = getcourseoverviews.main(dept,
+                                coursenum, area, title)
 
         json_doc = json.dumps(overviews_result)
         response = flask.make_response(json_doc)
         response.headers['Content-Type'] = 'application/json'
         return response
     except sqlite3.Error as e:
-        print(sys.argv[0] + ":", e, file=sys.stderr)    
-        err_msg = sys.argv[0] + ": A server error occured. Please contact the system administrator."
+        print(sys.argv[0] + ":", e, file=sys.stderr)
+        err_msg = sys.argv[0] + (": A server error occured. "
+        "Please contact the system administrator.")
         out_err_json_doc = [False, err_msg]
         out_err_json_str = json.dumps(out_err_json_doc)
         response = flask.make_response(out_err_json_str)
@@ -55,7 +57,7 @@ def regdetails():
         response = flask.make_response(out_err_json_str)
         response.headers['Content-Type'] = 'application/json'
         return response
-        
+
     if not classid.isdigit():
         message = 'non-integer classid'
         out_err_json_doc = [False, message]
@@ -64,7 +66,7 @@ def regdetails():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-    try: 
+    try:
         classid = classid.strip()
         query_to_results = {}
         getclassdetails.main(classid, query_to_results)
@@ -83,21 +85,24 @@ def regdetails():
         response = flask.make_response(out_json_doc)
         response.headers['Content-Type'] = 'application/json'
         return response
-    
+
     except sqlite3.Error as e:
-        print(sys.argv[0] + ":", e, file=sys.stderr)    
-        err_msg = sys.argv[0] + ": A server error occured. Please contact the system administrator."
+        print(sys.argv[0] + ":", e, file=sys.stderr)
+        err_msg = sys.argv[0] + (": A server error occured. "
+        "Please contact the system administrator.")
         out_err_json_doc = [False, err_msg]
         out_err_json_str = json.dumps(out_err_json_doc)
         response = flask.make_response(out_err_json_str)
-        response.headers['Content-Type'] = 'application/json'    
+        response.headers['Content-Type'] = 'application/json'
         return response
-    
+
 #-----------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description='The registrar application')
-    parser.add_argument('port', type=int, help='the port at which the server should listen')
+    parser = argparse.ArgumentParser(
+        description='The registrar application')
+    parser.add_argument('port', type=int,
+            help='the port at which the server should listen')
     args = parser.parse_args()
 
     app.config['PORT'] = args.port

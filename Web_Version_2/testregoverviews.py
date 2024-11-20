@@ -53,9 +53,9 @@ def create_driver(browser, mode):
         try:
             options = Options()
             if mode == 'headless':
-               options.add_argument('-headless')
+                options.add_argument('-headless')
             driver = webdriver.Firefox(options=options)
-        except Exception as ex:  # required if using snap firefox
+        except Exception as _:  # required if using snap firefox
             from selenium.webdriver.firefox.service import Service
             options = Options()
             if mode == 'headless':
@@ -158,53 +158,54 @@ def main():
     driver.get(server_url)
 
 
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS'})
-    run_test(delay, driver, 
-        {'dept': 'COS', 'coursenum': '2', 'area': 'qr', 'title': 'intro'})
+    run_test(delay, driver,
+        {'dept': 'COS', 'coursenum': '2',
+          'area': 'qr', 'title': 'intro'})
 
     # Testing subsets of 4
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'area': 'qr', 'num': '2', 'title': 'intro'})
 
     # Testing subsets of 3
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'num': '2', 'area': 'qr'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'num': '2', 'title': 'intro'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'area': 'qr', 'title': 'intro'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'num': '2', 'area': 'qr', 'title': 'intro'})
 
     # Testing subsets of 2
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'num': '2'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'area': 'qr'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS', 'title': 'intro'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'num': '2', 'area': 'qr'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'num': '2', 'title': 'intro'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'area': 'qr', 'title': 'intro'})
 
     # Testing subsets of 1
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'dept': 'COS'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'area': 'qr'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'title': 'intro'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'num': '2'})
 
     # Testing wildcard characters
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'title': 'c%S'})
-    run_test(delay, driver, 
+    run_test(delay, driver,
         {'title': 'C_S'})
 
     # Testing different argument combinations

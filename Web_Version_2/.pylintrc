@@ -1,0 +1,13 @@
+[MASTER]
+disable=duplicate-code
+[EXCEPTIONS]
+overgeneral-exceptions=builtins.BaseException
+[MESSAGES CONTROL]
+disable=missing-module-docstring,
+        missing-class-docstring,
+        missing-function-docstring,
+        redefined-builtin,
+        consider-using-f-string
+[FORMAT]
+max-line-length=72
+max-module-lines=500

@@ -53,7 +53,7 @@ def create_driver(browser, mode):
         try:
             options = Options()
             if mode == 'headless':
-               options.add_argument('-headless')
+                options.add_argument('-headless')
             driver = webdriver.Firefox(options=options)
         except Exception as ex:  # required if using snap firefox
             from selenium.webdriver.firefox.service import Service
