@@ -1,0 +1,16 @@
+David Beeson and Nick Nguyen
+
+Nick:
+We coded together for much of the project including modifying the runserver.py program, and the index.html file. I covered most of the scipt.js file, but we worked together to make sure that we had an understanding of AJAX and mustache. I also covered most of the testing.
+
+David: 
+Like Nick mentioned, we coded together alot on the runserver.py and index.html file. While nick handled most of the script.js, I helped form some of the html strings within the js and also kept up to understand AJAX and mustache. I also led us on the botstrap components of the index.html file. I also then handled the pylint, and tried to help out on the error testing front too, though Nick did most of that. 
+
+Outside help (people): None
+
+Outside help (resources): 
+https://github.com/janl/mustache.js - mustache for our index.html file
+
+We spent around 18 hours on this asignment
+
+We think the assignment was helpful in locking down our understanding of html and js frameworks like bootstrap, AJAX, and mustache. We think it could've used a little more open ended creativity through the actual design of the page instead of following a laid out design, but this framework was helpful too. 
